@@ -30,8 +30,9 @@ templates/ieee/
 ```toml
 name = "IEEE conference"
 description = "A two-column paper with IEEEtran, for IEEE conferences."
-category = "Journals & conferences"  # Papers, School, Theses & reports, Presentations, Posters, Letters & CV,
-                          # or Journals & conferences (publisher templates, shown in their own folder)
+# Papers, School, Theses & reports, Presentations, Posters, Letters & CV,
+# or Journals & conferences (publisher templates, shown in their own folder)
+category = "Journals & conferences"
 tags = ["ieee", "conference", "two-column"]
 order = 1                 # optional: position within the category
 ```
