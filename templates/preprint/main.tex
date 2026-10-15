@@ -1,0 +1,197 @@
+\documentclass[11pt,a4paper]{article}
+
+% ---- Fonts and page ---------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{libertine}              % Linux Libertine text, Biolinum as the sans-serif font
+\usepackage[libertine]{newtxmath}   % maths that matches Libertine
+\usepackage[scaled=0.85]{beramono}  % monospaced font, scaled to match the x-height
+\usepackage[a4paper,left=3.2cm,right=3.2cm,top=3cm,bottom=3.2cm]{geometry}
+% Wide margins keep lines near 70 characters, which is what makes a page calm to read.
+\usepackage{microtype}              % better spacing and hyphenation; costs nothing
+\linespread{1.05}
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{0pt}
+
+% ---- Maths, figures, tables ------------------------------------------------
+\usepackage{amsmath}   % newtxmath already provides the amssymb symbols
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[font=small,labelfont=bf,labelsep=period,margin=0.6cm]{caption}
+\usepackage{pgfplots}               % figures drawn from data, so the template needs no image files
+\pgfplotsset{compat=1.16}
+
+% ---- Colour, headings, page headers ----------------------------------------
+\usepackage[dvipsnames]{xcolor}
+\definecolor{accent}{HTML}{1F4E79}  % one accent colour, used for headings and links only
+\usepackage{titlesec}
+\titleformat{\section}{\sffamily\Large\bfseries\color{accent}}{\thesection}{0.7em}{}
+\titleformat{\subsection}{\sffamily\large\bfseries}{\thesubsection}{0.7em}{}
+\titlespacing*{\section}{0pt}{2.2ex plus .4ex}{1.2ex}
+\titlespacing*{\subsection}{0pt}{1.8ex plus .3ex}{0.8ex}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[L]{\small\sffamily\color{gray} Preprint}
+\fancyhead[R]{\small\sffamily\color{gray} A Short Running Title}
+\fancyfoot[C]{\small\thepage}
+\fancypagestyle{plain}{% first page: no running head, a status line instead
+  \fancyhf{}\renewcommand{\headrulewidth}{0pt}
+  \fancyfoot[L]{\footnotesize\sffamily\color{gray} Preprint, not peer reviewed}
+  \fancyfoot[R]{\small\thepage}}
+
+% ---- Authors and affiliations ---------------------------------------------
+% authblk numbers the affiliations and lists them under the authors.
+\usepackage[noblocks]{authblk}
+\renewcommand{\Authfont}{\large}
+\renewcommand{\Affilfont}{\small\itshape}
+\renewcommand{\Authsep}{, }
+\renewcommand{\Authand}{, }
+\renewcommand{\Authands}{, and }
+\setlength{\affilsep}{0.8em}
+
+% ---- Citations and links ----------------------------------------------------
+% Author-year citations: \citet{key} gives "Smith (2020)", \citep{key} gives "(Smith, 2020)".
+\usepackage[round,authoryear]{natbib}
+\bibliographystyle{plainnat}
+\setlength{\bibsep}{3pt}
+% hyperref goes last. Coloured links look the same on screen and on arXiv's PDF;
+% they are not printed in colour by most printers, so nothing is lost on paper.
+\usepackage[colorlinks=true,linkcolor=accent,citecolor=accent,urlcolor=accent,
+            bookmarksnumbered]{hyperref}
+\usepackage[capitalise]{cleveref}
+
+\title{\sffamily\bfseries A Descriptive Title That Names the Method and the Result}
+\author[1,*]{First Author}
+\author[1,2]{Second Author}
+\author[2]{Third Author}
+\author[3]{Fourth Author}
+\affil[1]{Department of Computer Science, Example University, City, Country}
+\affil[2]{Example Research Institute, City, Country}
+\affil[3]{Independent researcher}
+\affil[*]{Corresponding author: \texttt{first.author@example.org}}
+\date{\today}
+% The PDF's title and author fields (what arXiv, search engines and reference managers
+% read) are set by hand: hyperref's pdfusetitle cannot read authblk's author list.
+\hypersetup{pdftitle={A Descriptive Title That Names the Method and the Result},
+  pdfauthor={First Author, Second Author, Third Author, Fourth Author},
+  pdfkeywords={keyword one, keyword two, keyword three}}
+
+% The abstract in a narrower block with the keywords underneath.
+\renewenvironment{abstract}{\begin{quote}\small\noindent\textbf{\sffamily Abstract.}\ }%
+  {\end{quote}}
+\newcommand{\keywords}[1]{\par\smallskip\noindent\textbf{\sffamily Keywords:} #1}
+
+\begin{document}
+\maketitle
+\thispagestyle{plain}
+
+\begin{abstract}
+Summarise the paper in about 150 to 250 words: the problem, why it is hard, what you did,
+and the one result a reader should remember. Avoid citations and equations here, because
+repositories and search engines show the abstract on its own.
+\keywords{keyword one, keyword two, keyword three}
+\end{abstract}
+
+\section{Introduction}
+Open with the problem and why it matters. Then say what is missing in earlier work
+\citep{he2016,vaswani2017} and what this paper adds. Author-year citations read well
+in running text: \citet{kingma2015} is a good example of a method paper whose name carries
+the idea. End the section with a short list of contributions and a roadmap
+(\cref{sec:method} describes the method, \cref{sec:results} the results).
+
+\section{Method}\label{sec:method}
+Define the setting and notation before using it. Equations are numbered when you refer to them
+later, so label only those you cite:
+\begin{equation}
+  \hat{\theta} = \arg\min_{\theta}\; \frac{1}{n}\sum_{i=1}^{n} \ell\bigl(f_{\theta}(x_i),\, y_i\bigr)
+  + \lambda\,\lVert\theta\rVert_2^2 .
+  \label{eq:objective}
+\end{equation}
+\Cref{eq:objective} is typeset with \texttt{amsmath} and cited with \texttt{\textbackslash cref},
+which writes ``Equation~1'' for you.
+
+\subsection{Implementation details}
+Give enough detail to reproduce the work, and move the rest to Appendix~\ref{app:details}.
+Mention software versions, random seeds and hardware.
+
+\section{Results}\label{sec:results}
+\Cref{fig:curve} shows a figure drawn directly in \LaTeX{} from data points;
+\cref{tab:main} shows a table. Put the interpretation in the text, not only in the caption.
+
+Report how much results vary, not just their mean: give the spread over runs or seeds
+(standard deviation or a confidence interval) and say how many runs it is based on. If you
+claim that one method is better, say which test supports it, or that the difference is within
+the noise.
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[width=0.86\linewidth, height=5.6cm, xlabel={Training steps (thousands)},
+                 ylabel={Validation error (\%)}, xmin=0, xmax=50, ymin=0,
+                 grid=major, grid style={gray!25}, legend pos=north east,
+                 legend style={font=\small, draw=none, fill=none},
+                 tick label style={font=\small}, label style={font=\small}]
+      \addplot[thick, color=gray, dashed] coordinates {(0,38) (5,22) (10,17) (20,14.2) (30,13.1) (40,12.7) (50,12.4)};
+      \addplot[thick, color=accent] coordinates {(0,36) (5,18) (10,12.5) (20,9.6) (30,8.6) (40,8.2) (50,8.1)};
+      \legend{Baseline, Proposed}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Validation error during training. Captions go below figures, and should be
+  readable without the main text.}
+  \label{fig:curve}
+\end{figure}
+
+\begin{table}[ht]
+  \centering
+  \caption{Test error (\%) of the baseline and the proposed method, mean over five runs.
+  Captions go above tables.}
+  \label{tab:main}
+  \begin{tabular}{lcc}
+    \toprule
+    Method & Error (\%) & Time per step (ms) \\
+    \midrule
+    Baseline & 12.4 & 38 \\
+    Proposed & \textbf{8.1} & 41 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+% Tables use only horizontal rules (booktabs): no vertical lines, no double rules.
+
+\section{Discussion}
+Interpret the results, state the limitations plainly, and say what a reader should not
+conclude from them. A short conclusion can follow here or get its own section.
+
+\section*{Acknowledgements}
+Thank funders (with grant numbers), colleagues and reviewers. Delete the section if you have no one to thank.
+
+\bibliography{refs}
+
+\appendix
+\section{Additional experimental details}\label{app:details}
+Material that supports the paper but would interrupt it goes here: hyperparameters, proofs,
+extra figures and tables. \Cref{tab:hyper} lists the settings used for \cref{sec:results}.
+
+\begin{table}[ht]
+  \centering
+  \caption{Hyperparameters used in all experiments.}
+  \label{tab:hyper}
+  \begin{tabular}{ll}
+    \toprule
+    Setting & Value \\
+    \midrule
+    Optimiser & Adam \citep{kingma2015} \\
+    Learning rate & $10^{-3}$ \\
+    Batch size & 128 \\
+    Weight decay $\lambda$ & $10^{-4}$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Notes on submitting to arXiv}
+arXiv builds your sources itself, and it does not run BibTeX. Upload the \texttt{.bbl} file that
+Lemmata writes next to the PDF (\texttt{build/main.bbl}) together with \texttt{main.tex}, and any figure
+files; keep the name of the \texttt{.bbl} the same as the main file. Delete this section before you submit.
+
+\end{document}

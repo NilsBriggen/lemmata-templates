@@ -1,0 +1,5 @@
+name = "Preprint"
+description = "A calm single-column preprint for arXiv or a lab website, with several authors and affiliations, author-year citations and an appendix."
+order = 22
+category = "Papers"
+tags = ["preprint", "arxiv", "single-column", "authors", "affiliations", "natbib", "appendix"]

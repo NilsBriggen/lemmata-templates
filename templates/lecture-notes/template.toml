@@ -1,0 +1,5 @@
+name = "Lecture notes"
+description = "Lecture notes for a university course with boxed definitions, theorems, examples and remarks, exercises with switchable solutions, margin notes and an index."
+category = "School"
+tags = ["lecture notes", "course", "theorem", "definition", "exercises", "solutions", "tcolorbox", "index", "mathematics"]
+order = 33

@@ -1,0 +1,145 @@
+% amsart is the American Mathematical Society's article class. It is single-column and
+% sets the title, the author addresses and the abstract in the AMS layout; many
+% mathematics journals (and arXiv authors) use it. 11pt, a4paper or letterpaper are
+% the usual options; "reqno" puts equation numbers on the right (the default here).
+\documentclass[11pt,a4paper]{amsart}
+\usepackage{amssymb}                 % amsart already loads amsmath and amsthm
+\usepackage{mathtools}               % \coloneqq (the := sign, with correct spacing)
+\usepackage[hidelinks]{hyperref}     % load last (or nearly); links in refs and citations
+
+% Theorem-like environments. All share one counter, numbered within the section, so
+% "Lemma 2.3" always comes after "Theorem 2.2": readers can find results by number.
+\theoremstyle{plain}   % italic text: results
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}  % upright text: definitions and conventions
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}      % upright, run-in title, not numbered by default
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}  % equations as (2.1), (2.2): restart in each section
+
+% Operators get their own commands so that the spacing is right.
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\Lip}{Lip}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+
+\begin{document}
+
+\title[Short running title]{A Fixed Point Approach to Existence\\ for Ordinary Differential Equations}
+
+% Authors: \address, \email and \urladdr come after \author. Use one \author per person.
+\author{First Author}
+\address{Department of Mathematics, Example University, City, Country}
+\email{first.author@example.edu}
+\urladdr{https://example.edu/~first}
+
+\author{Second Author}
+\address{Institute of Analysis, Another University, City, Country}
+\email{second.author@example.org}
+
+% Funding and "received" notes go in \thanks; \dedicatory is optional.
+\thanks{The first author was supported by Funding Body, grant 000000.}
+\subjclass[2020]{Primary 34A12; Secondary 47H10, 54H25}  % https://mathscinet.ams.org/mathscinet/msc/msc2020.html
+\keywords{fixed point, contraction mapping, initial value problem, Picard iteration}
+\date{\today}
+
+\begin{abstract}
+State the question, the result and the idea of the proof in a few sentences. In
+mathematics the abstract is read without the paper at hand: avoid citations and
+displayed formulas, and say what the theorem is. Here we recover the local existence
+and uniqueness of solutions of $x' = f(t,x)$ from the contraction mapping principle.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+Say what is known, what is missing and what you prove, with references to
+Theorem~\ref{thm:main} and to the literature~\cite{coddington55,rudin76}. Introduce the
+notation in the order the reader needs it. Cite a specific place if you can,
+for example \cite[Chapter~1]{coddington55}.
+
+\section{Preliminaries}\label{sec:prelim}
+\begin{definition}\label{def:contraction}
+  Let $(X,d)$ be a metric space. A map $T\colon X\to X$ is a \emph{contraction} if there is
+  $q\in[0,1)$ such that $d(Tx,Ty)\le q\,d(x,y)$ for all $x,y\in X$.
+\end{definition}
+
+\begin{lemma}[Banach \cite{banach22}]\label{lem:banach}
+  If $(X,d)$ is complete and non-empty and $T$ is a contraction (Definition~\ref{def:contraction}) with constant $q$, then
+  $T$ has exactly one fixed point $x^*$, and $d(T^nx_0,x^*)\le q^n(1-q)^{-1}d(Tx_0,x_0)$ for every $x_0\in X$.
+\end{lemma}
+\begin{proof}
+  Put $x_n = T^n x_0$. By induction $d(x_{n+1},x_n)\le q^n d(x_1,x_0)$, so for $m>n$
+  \[
+    d(x_m,x_n)\le \sum_{k=n}^{m-1} q^k\, d(x_1,x_0)\le \frac{q^n}{1-q}\,d(x_1,x_0).
+  \]
+  Hence $(x_n)$ is Cauchy and converges to some $x^*$, which is fixed because $T$ is
+  continuous. If $y$ is another fixed point, then $d(x^*,y)\le q\,d(x^*,y)$, so $y=x^*$.
+  Letting $m\to\infty$ above gives the estimate.
+\end{proof}
+
+\begin{remark}\label{rem:completeness}
+  Remarks and examples share the counter of the results, so ``Remark~\ref{rem:completeness}''
+  is found in the same sequence. Completeness cannot be dropped in Lemma~\ref{lem:banach}.
+\end{remark}
+
+\section{An equation-heavy section}\label{sec:main}
+Let $f\colon [0,a]\times\R^n\to\R^n$ be continuous and Lipschitz in the second variable,
+\begin{equation}\label{eq:lipschitz}
+  \norm{f(t,x)-f(t,y)}\le L\,\norm{x-y}.
+\end{equation}
+We write the initial value problem $x'=f(t,x)$, $x(0)=x_0$ as an integral equation, so
+that a solution is a fixed point of
+\begin{equation}\label{eq:picard}
+  (Tx)(t) \coloneqq x_0 + \int_0^t f\bigl(s,x(s)\bigr)\,ds .
+\end{equation}
+Multi-line derivations use \texttt{align}; number only the lines you refer to, and let the
+equals signs line up:
+\begin{align}
+  \norm{(Tx)(t)-(Ty)(t)}
+    &\le \int_0^t \norm{f(s,x(s))-f(s,y(s))}\,ds \notag\\
+    &\le L \int_0^t \norm{x(s)-y(s)}\,ds \label{eq:step}\\
+    &\le L\,t\,\sup_{0\le s\le t}\norm{x(s)-y(s)}. \notag
+\end{align}
+Cases are typeset with the \texttt{cases} environment:
+\begin{equation}\label{eq:weight}
+  w_\lambda(t) =
+  \begin{cases}
+    e^{-\lambda t}, & 0\le t\le a,\\
+    0, & \text{otherwise.}
+  \end{cases}
+\end{equation}
+
+\begin{theorem}\label{thm:main}
+  Under \eqref{eq:lipschitz} the problem $x'=f(t,x)$, $x(0)=x_0$ has exactly one solution on $[0,a]$.
+\end{theorem}
+\begin{proof}
+  On $X=C([0,a];\R^n)$ use the norm $\norm{x}_\lambda=\sup_t e^{-\lambda t}\norm{x(t)}$ with
+  $\lambda=2L$. It is equivalent to the supremum norm, so $X$ is complete. By \eqref{eq:step},
+  \[
+    e^{-\lambda t}\norm{(Tx)(t)-(Ty)(t)} \le L\,\norm{x-y}_\lambda\int_0^t e^{-\lambda(t-s)}\,ds
+    \le \tfrac12\norm{x-y}_\lambda ,
+  \]
+  so $T$ is a contraction on $X$, and Lemma~\ref{lem:banach} gives the unique fixed point.
+\end{proof}
+
+\begin{corollary}
+  The solution depends continuously on $x_0$: $\norm{x-y}_\lambda\le 2\norm{x_0-y_0}$.
+\end{corollary}
+
+\section{Conventions worth knowing}\label{sec:conv}
+Put a full stop or comma after displayed formulas that end a sentence, as in
+\eqref{eq:picard}. Use \verb|\eqref| for equations and plain \verb|\ref| for theorems, and
+a non-breaking space (\verb|~|) before them. Write $\diam A$ and $\Lip(f)$ with the
+operators declared in the preamble rather than as italic letters.
+
+% The AMS ships two BibTeX styles: amsplain (numbered, as here) and amsalpha (labels such
+% as [Rud76]). Change the style name to switch; the .bib file stays the same.
+\bibliographystyle{amsplain}
+\bibliography{refs}
+
+\end{document}

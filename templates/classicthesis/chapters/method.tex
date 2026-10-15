@@ -1,0 +1,25 @@
+\chapter{Method}\label{ch:method}
+
+\section{Overview}
+Describe the approach so that someone could repeat it. A diagram often says it faster than
+a paragraph; \cref{fig:pipeline} is drawn with TikZ, so it needs no image file.
+
+\begin{figure}[bth]
+  \centering
+  \begin{tikzpicture}[node distance=8mm, box/.style={draw, rounded corners, minimum height=8mm, inner sep=4pt, font=\small}]
+    \node[box] (data) {Data};
+    \node[box, right=of data] (model) {Model};
+    \node[box, right=of model] (eval) {Evaluation};
+    \draw[-{Stealth}] (data) -- (model);
+    \draw[-{Stealth}] (model) -- (eval);
+  \end{tikzpicture}
+  \caption[Short title for the list of figures]{The pipeline in three steps. Keep captions
+    short and self-contained.}\label{fig:pipeline}
+\end{figure}
+
+\section{Formal Setting}
+Number only the equations you refer to later. For example, the objective in
+\cref{eq:objective} is minimized over the parameters $\theta$:
+\begin{equation}\label{eq:objective}
+  \hat{\theta} = \operatorname*{arg\,min}_{\theta}\; \frac{1}{n}\sum_{i=1}^{n} \ell\bigl(f_\theta(x_i), y_i\bigr) + \lambda\,\lVert\theta\rVert^2 .
+\end{equation}

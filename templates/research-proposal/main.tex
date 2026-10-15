@@ -1,0 +1,219 @@
+\documentclass[11pt,a4paper,parskip=half-]{scrartcl}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathpazo}               % Palatino text and maths
+\usepackage[scaled=0.9]{helvet}     % sans-serif for headings, scaled to match
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\setlist{nosep}
+\usepackage{xcolor}
+\usepackage{siunitx}
+\sisetup{group-minimum-digits=4}   % 4000 and 52000 are both written with a thin space
+\usepackage{pgfgantt}               % the Gantt chart; it loads TikZ
+\usepackage[round,authoryear]{natbib}
+\bibliographystyle{plainnat}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+\addtokomafont{disposition}{\sffamily}
+
+% ---- Fill in once -------------------------------------------------------------
+\newcommand{\proposaltitle}{Title of the Research Proposal}
+\newcommand{\applicant}{First Applicant}
+\newcommand{\institution}{Example University, Department of Science}
+\newcommand{\duration}{24 months}
+\hypersetup{pdftitle={\proposaltitle}, pdfauthor={\applicant}}
+
+\usepackage[headsepline]{scrlayer-scrpage}
+\clearpairofpagestyles
+\ihead{\small\proposaltitle}
+\ohead{\small\applicant}
+\cfoot{\pagemark}
+
+\begin{document}
+
+% ---- Cover block: the facts a reviewer looks for first ---------------------------
+{\raggedright
+\sffamily\bfseries\LARGE \proposaltitle\par}
+\medskip
+\noindent\textsf{\large Research proposal}\par
+\vspace{0.6em}
+\noindent\begin{tabularx}{\textwidth}{@{}l X@{}}
+  \toprule
+  \sffamily Applicant       & \applicant, \institution \\
+  \sffamily Duration        & \duration \\
+  \sffamily Funding sought  & see \cref{sec:budget} \\
+  \sffamily Keywords        & keyword one, keyword two, keyword three \\
+  \bottomrule
+\end{tabularx}
+
+\section*{Summary}
+One paragraph, readable by a non-specialist, of about 150 words: the problem, the approach,
+what will exist at the end that does not exist now, and why it matters. Panels often read only
+this and the aims; write them first and with the most care.
+
+% ---- 1 -----------------------------------------------------------------------------
+\section{Aims and objectives}\label{sec:aims}
+\textbf{Overall aim.} One sentence: what this project will achieve.
+
+\textbf{Objectives.} Three to five, each one checkable at the end of the project. Number them
+so that the work plan, the milestones and the budget can refer to them.
+\begin{description}[leftmargin=2.2em,labelwidth=2em,labelsep=0.2em,font=\bfseries]
+  \item[O1] Establish how X behaves under condition Y.
+  \item[O2] Develop a method that does Z with at least half the error of the current best approach.
+  \item[O3] Validate the method on real data and release it as open software.
+\end{description}
+
+% ---- 2 -----------------------------------------------------------------------------
+\section{Background and state of the art}
+Show that you know the field and that the gap is real. Cite the work a reviewer expects to
+see, say what it achieves and where it stops, and end with the question this project answers.
+Data should follow the FAIR principles \citep{wilkinson2016}; planned work is scheduled
+as in a Gantt chart \citep{gantt1919}. \citet{kingma2015} is an example of a citation in running text.
+
+% ---- 3 -----------------------------------------------------------------------------
+\section{Methods}
+Say how each objective will be reached, in the same order as in \cref{sec:aims}. Give
+enough detail that a specialist can judge feasibility: data, equipment, analysis, and how
+you will know it worked.
+\begin{equation}
+  \hat{\theta} = \arg\min_{\theta}\; \frac{1}{n}\sum_{i=1}^{n} \ell\bigl(f_{\theta}(x_i),\, y_i\bigr)
+  \label{eq:objective}
+\end{equation}
+Equations are numbered as usual (\cref{eq:objective}). Name the main risks and what you
+would do if they happen, either here or in a short table.
+
+% ---- 4 -----------------------------------------------------------------------------
+\section{Work plan}\label{sec:plan}
+The work is divided into work packages (WP), each with a start and end month, an
+objective it serves, and a lead. \Cref{fig:gantt} shows the schedule.
+
+\begin{description}[leftmargin=2.8em,labelwidth=2.6em,labelsep=0.2em,font=\bfseries]
+  \item[WP1] \textbf{Preparation} (months 1--6, serves O1). Literature review, ethics approval, data collection set-up.
+  \item[WP2] \textbf{Method development} (months 4--15, serves O2). Design, implementation and tests on synthetic data.
+  \item[WP3] \textbf{Validation} (months 13--21, serves O3). Experiments on real data and comparison with existing methods.
+  \item[WP4] \textbf{Dissemination} (months 18--24, serves O3). Papers, software release, final report.
+\end{description}
+
+% ================================================================================
+% HOW TO EDIT THE GANTT CHART
+%   * The chart runs from month 1 to month 24: change the two numbers in
+%     \begin{ganttchart}{1}{24}, the \gantttitle lines (one per year) and the list
+%     in \gantttitlelist if your project is longer or shorter.
+%   * One line per task. Copy a line and change the label and the two month numbers:
+%         \ganttbar{label}{first month}{last month} \\
+%     \ganttgroup draws a bracket-style bar for a whole work package; \ganttmilestone
+%     draws a diamond at one month. Every line but the last ends with \\ .
+%   * If the chart gets too wide or too narrow, change x unit (width of one month).
+% ================================================================================
+\begin{figure}[ht]
+  \centering
+  \begin{ganttchart}[
+      x unit=0.44cm, y unit title=0.5cm, y unit chart=0.62cm,
+      title label font=\sffamily\tiny, bar label font=\sffamily\footnotesize,
+      group label font=\sffamily\footnotesize\bfseries, milestone label font=\sffamily\footnotesize,
+      hgrid, vgrid={*{5}{draw=none}, dotted},       % a dotted line every sixth month
+      bar/.append style={fill=blue!45!black!70, draw=none},
+      group/.append style={fill=black!70, draw=none},
+      milestone/.append style={fill=orange!85!black, draw=none},
+    ]{1}{24}
+    \gantttitle{Year 1}{12} \gantttitle{Year 2}{12} \\
+    \gantttitlelist{1,...,24}{1} \\
+    \ganttgroup{WP1 Preparation}{1}{6} \\
+    \ganttbar{Literature review}{1}{4} \\
+    \ganttbar{Ethics approval}{2}{6} \\
+    \ganttgroup{WP2 Method development}{4}{15} \\
+    \ganttbar{Design}{4}{9} \\
+    \ganttbar{Implementation}{8}{15} \\
+    \ganttgroup{WP3 Validation}{13}{21} \\
+    \ganttbar{Experiments}{13}{19} \\
+    \ganttbar{Comparison}{18}{21} \\
+    \ganttgroup{WP4 Dissemination}{18}{24} \\
+    \ganttbar{Papers and software}{18}{24} \\
+    \ganttmilestone{Milestones}{6} \ganttmilestone{}{15} \ganttmilestone{}{21} \ganttmilestone{}{24}
+  \end{ganttchart}
+  \caption{Work plan. Diamonds are the milestones M1--M4 of \cref{tab:milestones}.}
+  \label{fig:gantt}
+\end{figure}
+
+% ---- 5 -----------------------------------------------------------------------------
+\section{Milestones and deliverables}
+A milestone is a point at which something can be checked. Keep the months in step with
+the diamonds in \cref{fig:gantt}.
+
+\begin{table}[ht]
+  \centering
+  \caption{Milestones (M) and deliverables (D).}
+  \label{tab:milestones}
+  \begin{tabularx}{\textwidth}{@{}l c l X@{}}
+    \toprule
+    ID & Month & WP & Description and how it is verified \\
+    \midrule
+    M1 & 6  & WP1 & Data collection set up and approved; checked by the ethics committee. \\
+    M2 & 15 & WP2 & Method implemented and passing all tests on synthetic data. \\
+    D1 & 15 & WP2 & Open-source software, version 1.0, with documentation. \\
+    M3 & 21 & WP3 & Validation complete; results meet the target in O2. \\
+    D2 & 24 & WP4 & Two journal papers submitted; final report to the funder. \\
+    M4 & 24 & WP4 & Project closed and data archived under FAIR principles. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+% ---- 6 -----------------------------------------------------------------------------
+\section{Budget}\label{sec:budget}
+% ================================================================================
+% HOW TO EDIT THE BUDGET
+%   One line per cost item:   \budgetline{description}{year 1 amount}{year 2 amount}
+%   Whole amounts in euros (no decimals, no thousands separator). Copy, delete or reorder
+%   lines freely. The sums, the overhead and the total are calculated for you.
+%   Change the overhead rate in \budgetoverhead{15} (percent of direct costs) and the
+%   currency in the caption. For three years, add a counter and a column in the same way.
+% ================================================================================
+\newcounter{bA}\newcounter{bB}   % direct costs, year 1 and year 2
+\newcounter{oA}\newcounter{oB}   % overhead, year 1 and year 2
+% siunitx does not calculate, so the sum is evaluated first and handed over as plain digits.
+\newcommand{\amount}[1]{\edef\tmpamount{\number\numexpr#1\relax}\expandafter\num\expandafter{\tmpamount}}
+\newcommand{\budgetline}[3]{%
+  \addtocounter{bA}{#2}\addtocounter{bB}{#3}% add to the running sums
+  #1 & \amount{#2} & \amount{#3} & \amount{#2+#3} \\}
+\newcommand{\budgetoverhead}[1]{%
+  \setcounter{oA}{\numexpr(\value{bA}*#1)/100\relax}%
+  \setcounter{oB}{\numexpr(\value{bB}*#1)/100\relax}%
+  Indirect costs (#1\,\% of direct) & \amount{\value{oA}} & \amount{\value{oB}}
+    & \amount{\value{oA}+\value{oB}} \\}
+
+\begin{table}[ht]
+  \centering
+  \caption{Requested budget in euros.}
+  \label{tab:budget}
+  \begin{tabularx}{\textwidth}{@{}X r r r@{}}
+    \toprule
+    Item & Year 1 & Year 2 & Total \\
+    \midrule
+    \budgetline{Personnel: one researcher, full time}{52000}{54000}
+    \budgetline{Equipment: measurement kit}{8000}{0}
+    \budgetline{Consumables}{2000}{2000}
+    \budgetline{Travel and conferences}{3000}{4500}
+    \budgetline{Publication costs (open access)}{0}{1500}
+    \midrule
+    Direct costs & \amount{\value{bA}} & \amount{\value{bB}}
+      & \amount{\value{bA}+\value{bB}} \\
+    \budgetoverhead{15}
+    \midrule
+    \textbf{Total requested}
+      & \textbf{\amount{\value{bA}+\value{oA}}}
+      & \textbf{\amount{\value{bB}+\value{oB}}}
+      & \textbf{\amount{\value{bA}+\value{bB}+\value{oA}+\value{oB}}} \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+Justify every line above a few thousand euros in a sentence: why it is needed and why it
+costs that much. Personnel is normally the largest item and the one reviewers check first.
+
+\bibliography{refs}
+
+\end{document}

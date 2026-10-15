@@ -1,0 +1,250 @@
+\documentclass[11pt,a4paper,twoside,titlepage=false,index=totoc,headings=normal]{scrreprt}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{makeidx}
+\usepackage[hidelinks]{hyperref}
+
+% ---- Page: a wide outer margin ------------------------------------------------------
+% The text block is about 12 cm wide. The outer margin (4.4 cm) holds \mnote remarks and
+% leaves room for readers to write their own notes next to the text.
+\usepackage[a4paper,twoside,includemp,inner=2.4cm,outer=1.6cm,
+            marginparwidth=4.4cm,marginparsep=0.5cm,top=2.6cm,bottom=2.6cm]{geometry}
+\newcommand*{\mnote}[1]{\marginpar{\footnotesize\raggedright\color{black!70}#1}}
+
+% ---- The switch for solutions -------------------------------------------------------
+% One line decides whether the solutions are typeset: \showsolutionstrue for your own
+% copy, \showsolutionsfalse for the handout the students get.
+\newif\ifshowsolutions
+\showsolutionstrue
+
+% ---- Boxes for definitions, theorems, examples and remarks --------------------------
+\usepackage[most]{tcolorbox}   % "most" brings theorems, skins and breakable boxes
+\definecolor{defcol}{HTML}{1F5F99}
+\definecolor{thmcol}{HTML}{A32A2A}
+\definecolor{excol}{HTML}{2E7D4F}
+\definecolor{remcol}{HTML}{6B6B6B}
+\tcbset{
+  % Common look: a coloured bar on the left, a tinted background, no frame. The title
+  % runs into the text ("Definition 1.2 (Name). The text ...") so boxes stay compact.
+  notebox/.style={enhanced jigsaw, breakable, sharp corners, boxrule=0pt, frame hidden,
+    left=9pt, right=6pt, top=4pt, bottom=4pt, before skip=9pt, after skip=9pt,
+    fonttitle=\bfseries, separator sign={.}, description delimiters parenthesis,
+    attach title to upper={\ }, after title={\ }},
+  defstyle/.style={notebox, colback=defcol!6, coltitle=defcol, borderline west={2.5pt}{0pt}{defcol}},
+  thmstyle/.style={notebox, colback=thmcol!6, coltitle=thmcol, borderline west={2.5pt}{0pt}{thmcol}},
+  exstyle/.style={notebox, colback=excol!6, coltitle=excol, borderline west={2.5pt}{0pt}{excol}},
+  remstyle/.style={notebox, colback=remcol!6, coltitle=remcol, borderline west={2.5pt}{0pt}{remcol}},
+}
+% Theorems, lemmas and corollaries share one counter, numbered by chapter: Theorem 1.3
+% is followed by Definition 1.4. Use \begin{theorem}{Title}{label} and refer to it with
+% Theorem~\ref{thm:label}. Definitions, lemmas and examples use the same pattern.
+\newtcbtheorem[number within=chapter]{theorem}{Theorem}{thmstyle}{thm}
+\newtcbtheorem[use counter from=theorem]{lemma}{Lemma}{thmstyle}{lem}
+\newtcbtheorem[use counter from=theorem]{definition}{Definition}{defstyle}{def}
+\newtcbtheorem[use counter from=theorem]{example}{Example}{exstyle}{ex}
+\newtcolorbox{remark}{remstyle,title={Remark.}}   % remarks are not numbered
+
+\renewcommand*{\qedsymbol}{$\blacksquare$}
+
+% ---- Exercises with solutions -----------------------------------------------------------
+\newcounter{exercise}[chapter]
+\renewcommand*{\theexercise}{\thechapter.\arabic{exercise}}
+\newenvironment{exercise}{\par\medskip\refstepcounter{exercise}\noindent\textbf{Exercise~\theexercise.}\ }{\par}
+% The solution is only read from the file when the switch above is on; otherwise it
+% vanishes without a trace. Put it directly after its exercise.
+\NewEnviron{solution}{%
+  \ifshowsolutions
+    \begin{tcolorbox}[notebox,colback=black!4,coltitle=black!70,borderline west={2.5pt}{0pt}{black!40},
+      title={Solution.},before skip=4pt]
+      \BODY
+    \end{tcolorbox}
+  \fi}
+
+% ---- Index: \defn{term} sets the term in italics and adds it to the index -------------
+% (latexmk, which Lemmata uses, runs makeindex by itself; no extra setup is needed.)
+\makeindex
+\newcommand*{\defn}[1]{\emph{#1}\index{#1}}
+
+% ---- Notation -------------------------------------------------------------------------
+\newcommand*{\R}{\mathbb{R}}
+\newcommand*{\N}{\mathbb{N}}
+\newcommand*{\eps}{\varepsilon}
+\DeclareMathOperator{\sgn}{sgn}
+
+\subject{Lecture notes}
+\title{Real Analysis I}
+\subtitle{Course MATH 201 \textperiodcentered\ Autumn 2026}
+\author{Prof.\ Alex Morgan\\ Department of Mathematics, Example University}
+\date{Version of \today}
+
+\begin{document}
+\maketitle
+
+\section*{How to read these notes}
+Everything important sits in a box, so you can find it when you revise. Write your own
+comments in the wide margin.
+
+\begin{tcolorbox}[defstyle,title={Definition.}]
+A new term is defined here and appears in the index.
+\end{tcolorbox}
+\begin{tcolorbox}[thmstyle,title={Theorem.}]
+A result that is proved in the text; lemmas and corollaries look the same.
+\end{tcolorbox}
+\begin{tcolorbox}[exstyle,title={Example.}]
+A worked case that makes the definition or theorem concrete.
+\end{tcolorbox}
+\begin{remark}
+A side comment: intuition, a warning or a pointer to other topics.
+\end{remark}
+
+Exercises close each chapter. Solutions appear after the exercises only in the instructor
+version of these notes.
+
+% \tableofcontents would start a new page; \@starttoc prints the same list right here,
+% so the first page is not left half empty. Use \tableofcontents on a long script.
+\section*{Contents}
+\makeatletter\@starttoc{toc}\makeatother
+
+% ======================================================================================
+\chapter{Sequences and limits}
+
+\section{Convergence}
+A \defn{sequence} of real numbers is a function $\N\to\R$, written $(a_n)_{n\ge 1}$.
+We want to say precisely what it means for $a_n$ to get arbitrarily close to a number $a$.
+\mnote{Think of $\eps$ as a challenge from an opponent, and of $N$ as your reply.}
+
+\begin{definition}{Convergence}{conv}
+  A sequence $(a_n)$ \defn{converges} to $a\in\R$ if for every $\eps>0$ there is an
+  $N\in\N$ such that $|a_n-a|<\eps$ for all $n\ge N$. We then write $a_n\to a$ or
+  $\lim_{n\to\infty}a_n=a$ and call $a$ the \defn{limit}.
+\end{definition}
+
+\begin{example}{The sequence $1/n$}{harmonic}
+  Let $a_n=1/n$. Given $\eps>0$, choose $N>1/\eps$. For all $n\ge N$ we have
+  $|a_n-0|=1/n\le 1/N<\eps$, so $a_n\to0$.
+\end{example}
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[x=0.7cm,y=2.6cm]
+    \fill[blue!10] (0.4,-0.2) rectangle (12.6,0.2);
+    \draw[dashed,blue!60] (0.4,0.2) -- (12.6,0.2) (0.4,-0.2) -- (12.6,-0.2);
+    \draw[->] (0.4,0) -- (12.9,0) node[right] {$n$};
+    \node[blue!70!black,left] at (0.4,0.2) {\small $+\varepsilon$};
+    \node[blue!70!black,left] at (0.4,-0.2) {\small $-\varepsilon$};
+    \foreach \n in {1,...,12}{\fill[\ifnum\n<6 black\else blue!70!black\fi] (\n,1/\n) circle (1.6pt);}
+    \draw[<->,red!70!black] (6,-0.35) -- node[below] {\small $n\ge N$} (12,-0.35);
+  \end{tikzpicture}
+  \caption{The points $a_n=1/n$ stay inside the strip of width $2\eps$ around the limit $0$
+  from $N=6$ on (here $\eps=0.2$).}
+  \label{fig:tube}
+\end{figure}
+
+\begin{theorem}{Uniqueness of the limit}{unique}
+  A convergent sequence has exactly one limit.
+\end{theorem}
+\begin{proof}
+  Suppose $a_n\to a$ and $a_n\to b$ with $a\ne b$, and let $\eps=|a-b|/2>0$. For large
+  $n$ both $|a_n-a|<\eps$ and $|a_n-b|<\eps$ hold, so by the triangle inequality
+  $|a-b|\le|a-a_n|+|a_n-b|<2\eps=|a-b|$, a contradiction.
+\end{proof}
+
+\begin{remark}
+  Proofs in analysis often follow the same pattern as above: choose $\eps$ cleverly in
+  terms of what you want to contradict, then take $n$ large enough for all the finitely
+  many conditions you need.
+\end{remark}
+
+\section{Monotone sequences}
+A sequence is \defn{monotone increasing} if $a_n\le a_{n+1}$ for all $n$, and
+\defn{bounded} if $|a_n|\le M$ for some $M$.
+
+\begin{theorem}{Monotone convergence}{mct}
+  Every bounded monotone increasing sequence converges, and its limit is
+  $\sup\{a_n : n\in\N\}$.
+\end{theorem}
+\begin{proof}
+  Let $s=\sup_n a_n$, which exists because the set is non-empty and bounded above. Given
+  $\eps>0$, the number $s-\eps$ is not an upper bound, so $a_N>s-\eps$ for some $N$. For
+  $n\ge N$ monotonicity gives $s-\eps<a_N\le a_n\le s$, hence $|a_n-s|<\eps$.
+\end{proof}
+
+\begin{example}{Recursive sequence}{recursive}
+  Let $a_1=1$ and $a_{n+1}=\sqrt{2+a_n}$. By induction $a_n<2$ and $a_n<a_{n+1}$, so
+  Theorem~\ref{thm:mct} gives a limit $a$ with
+  $a=\sqrt{2+a}$, that is $a=2$.
+\end{example}
+
+\section*{Exercises}
+\begin{exercise}
+  Show directly from Definition~\ref{def:conv} that $a_n=\dfrac{2n+1}{n+3}$ converges to $2$.
+\end{exercise}
+\begin{solution}
+  We have $\left|\frac{2n+1}{n+3}-2\right|=\frac{5}{n+3}<\frac5n$. Given $\eps>0$, choose
+  $N>5/\eps$; then $n\ge N$ implies $|a_n-2|<\eps$.
+\end{solution}
+
+\begin{exercise}
+  Give an example of a bounded sequence that does not converge. Which hypothesis of
+  Theorem~\ref{thm:mct} fails?
+\end{exercise}
+\begin{solution}
+  $a_n=(-1)^n$ is bounded and does not converge; it is not monotone.
+\end{solution}
+
+% ======================================================================================
+\chapter{Continuous functions}
+
+\section{Continuity}
+\begin{definition}{Continuity}{cont}
+  A function $f:D\to\R$ with $D\subseteq\R$ is \defn{continuous} at $x_0\in D$ if for every
+  $\eps>0$ there is a $\delta>0$ such that $|f(x)-f(x_0)|<\eps$ for all $x\in D$ with
+  $|x-x_0|<\delta$. It is continuous if it is continuous at every point of $D$.
+\end{definition}
+
+\begin{lemma}{Sequence criterion}{seq}
+  $f$ is continuous at $x_0$ if and only if $f(x_n)\to f(x_0)$ for every sequence $x_n\to x_0$
+  in $D$.
+\end{lemma}
+\begin{proof}
+  Omitted here. In your own notes, write the proof in the box above or the proof
+  environment below it; long proofs break across pages without trouble.
+\end{proof}
+
+\begin{example}{A continuous and a discontinuous function}{signum}
+  The function $x\mapsto x^2$ is continuous on $\R$. The sign function $\sgn$ is not
+  continuous at $0$: the sequence $x_n=1/n\to0$ gives $\sgn(x_n)=1\not\to\sgn(0)=0$.
+\end{example}
+
+\section{The intermediate value theorem}
+\begin{theorem}{Intermediate value theorem}{ivt}
+  Let $f:[a,b]\to\R$ be continuous with $f(a)<0<f(b)$. Then $f(c)=0$ for some $c\in(a,b)$.
+\end{theorem}
+\begin{proof}
+  Let $c=\sup\{x\in[a,b] : f(x)<0\}$. If $f(c)<0$, continuity would give points to the
+  right of $c$ with $f<0$; if $f(c)>0$, it would give points to the left of $c$ with
+  $f>0$, so that $c$ would not be the least upper bound. Hence $f(c)=0$.
+\end{proof}
+
+\begin{remark}
+  The theorem fails over $\mathbb{Q}$: $x^2-2$ changes sign on $[0,2]$ but has no rational
+  root. The completeness of $\R$ is exactly what the proof uses.
+\end{remark}
+
+\section*{Exercises}
+\begin{exercise}
+  Show that every polynomial of odd degree has a real root.
+\end{exercise}
+\begin{solution}
+  Divide by the leading coefficient. For large $|x|$ the polynomial has the sign of
+  $x^n$, which differs at $+R$ and $-R$ when $n$ is odd. Apply Theorem~\ref{thm:ivt}.
+\end{solution}
+
+% ======================================================================================
+\printindex
+\end{document}

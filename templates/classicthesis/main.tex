@@ -1,0 +1,55 @@
+% A dissertation in the classicthesis style (André Miede): Palatino, small-caps headings, a
+% generous margin for short notes. The class is KOMA-Script's scrbook; the look comes from the
+% classicthesis package, set up in classicthesis-config.tex (the way its own manual recommends).
+\documentclass[
+  twoside, openright, titlepage, numbers=noenddot,
+  headinclude, footinclude=true, cleardoublepage=empty,
+  BCOR=5mm, paper=a4, fontsize=11pt, american
+]{scrbook}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[american]{babel}
+\usepackage[dvipsnames]{xcolor}   % classicthesis needs the dvips colour names
+\usepackage{graphicx}
+\usepackage{amsmath}
+% Author-year citations with BibTeX; classicthesis loads hyperref itself, so natbib goes first.
+\usepackage[round,authoryear]{natbib}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+
+\input{classicthesis-config}   % title, author, and the classicthesis options
+
+\begin{document}
+\frenchspacing
+\raggedbottom
+\pagenumbering{roman}
+\pagestyle{plain}
+
+\input{frontmatter/titlepage}
+\input{frontmatter/abstract}
+\input{frontmatter/acknowledgments}
+
+\pagestyle{scrheadings}
+\tableofcontents
+\listoffigures
+\listoftables
+
+\cleardoublepage
+\pagenumbering{arabic}
+
+% One file per chapter: \include starts a new page and lets you rebuild just one chapter.
+\include{chapters/introduction}
+\include{chapters/method}
+\include{chapters/results}
+\include{chapters/conclusion}
+
+\appendix
+\include{chapters/appendix}
+
+\backmatter
+\cleardoublepage
+\bibliographystyle{plainnat}
+\bibliography{refs}
+
+\end{document}

@@ -1,0 +1,5 @@
+name = "Poster, A0 landscape"
+description = "A four-column A0 landscape conference poster with beamerposter: header with logo placeholders, method diagram, results plot and table, and a QR code."
+category = "Posters"
+tags = ["poster", "a0", "landscape", "beamerposter", "conference", "columns", "qr code"]
+order = 47

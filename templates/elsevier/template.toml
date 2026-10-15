@@ -1,5 +1,5 @@
 name = "Elsevier journal"
 description = "Manuscript for Elsevier journals with elsarticle: highlights, keywords and numbered references."
-order = 23
-category = "Papers"
+order = 66
+category = "Journals & conferences"
 tags = ["elsevier", "elsarticle", "journal", "preprint"]

@@ -1,0 +1,28 @@
+% Everything you set once for the whole thesis.
+
+% --- Your details: used on the title page and in the PDF properties. ---
+\newcommand{\myTitle}{A Clear Title That Says What the Thesis Is About}
+\newcommand{\mySubtitle}{An optional subtitle, or delete it}
+\newcommand{\myName}{Your Name}
+\newcommand{\myDegree}{Doctor of Philosophy}
+\newcommand{\myProf}{Prof.\ Dr.\ Supervisor Name}
+\newcommand{\myUni}{Example University}
+\newcommand{\myFaculty}{Faculty of Science}
+\newcommand{\myTime}{March 2026}
+
+% --- classicthesis options. ---
+% style=classicthesis is the default look; arsclassica, linedheaders and plain are alternatives.
+% dottedtoc: dotted leaders between contents entries and page numbers.
+% eulerchapternumbers: chapter numbers in the Euler face instead of Palatino.
+% eulermath: Euler for formulas as well (a matter of taste: remove it for plain Palatino maths).
+% drafting (add it while writing): prints the compile date in the footer of every page.
+\usepackage[
+  style=classicthesis, dottedtoc, eulerchapternumbers, eulermath
+]{classicthesis}
+
+% PDF title and author. classicthesis has already loaded hyperref with coloured links
+% (green citations, blue links); add `hidelinks` inside \hypersetup for a print version.
+\hypersetup{pdftitle={\myTitle}, pdfauthor={\myName}}
+
+% cleveref (\cref) must come after hyperref, so it is loaded here rather than in main.tex.
+\usepackage[nameinlink]{cleveref}

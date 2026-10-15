@@ -1,0 +1,130 @@
+% oneside and openany: chapters start on the next page, with no blank pages in between.
+% For a printed, double-sided report use twoside,openright instead (and widen the inner margin).
+\documentclass[11pt,a4paper,oneside,openany,titlepage,
+               headings=small,bibliography=totoc,numbers=noenddot]{scrreprt}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,left=3cm,right=2.5cm,top=2.8cm,bottom=2.8cm]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{enumitem}
+\setlist{nosep}
+\usepackage[hidelinks]{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+
+% ---- Fill in once: used on the title page, in the headers and in the PDF info ----
+\newcommand{\reporttitle}{Title of the Report}
+\newcommand{\reportsubtitle}{A subtitle that says what the report covers}
+\newcommand{\reportnumber}{TR-2026-01}
+\newcommand{\reportversion}{1.0}      % keep in step with the last row of the revision history
+\newcommand{\reportdate}{15 October 2026}
+\newcommand{\reportstatus}{Final}     % Draft, For review, Final ...
+\newcommand{\reportauthors}{First Author, Second Author}
+\newcommand{\reportorg}{Example Institute}
+\hypersetup{pdftitle={\reporttitle}, pdfauthor={\reportauthors}}
+
+% ---- Running headers and footers: report number left, chapter right ----------
+\usepackage[headsepline,footsepline]{scrlayer-scrpage}
+\clearpairofpagestyles
+\automark[chapter]{chapter}
+\ihead{\reportnumber{} v\reportversion}
+\ohead{\headmark}
+\cfoot{\pagemark}
+\renewcommand{\chapterpagestyle}{scrheadings}  % keep the header on chapter-opening pages too
+
+\begin{document}
+
+% ---- Title page -------------------------------------------------------------
+\begin{titlepage}
+  \raggedright
+  {\large\sffamily \reportorg\par}
+  \vspace*{2.5cm}
+  \rule{\textwidth}{1.2pt}\par\vspace{0.8cm}
+  {\sffamily\bfseries\Huge \reporttitle\par}
+  \vspace{0.6cm}
+  {\sffamily\Large \reportsubtitle\par}
+  \vspace{0.8cm}
+  \rule{\textwidth}{0.4pt}\par\vspace{0.8cm}
+  {\large \reportauthors\par}
+  \vfill
+  % The block that identifies this exact document: someone holding a printout can tell
+  % which version it is and ask for the right one.
+  \begin{tabular}{@{}l@{\qquad}l@{}}
+    \sffamily Report number & \reportnumber \\
+    \sffamily Version       & \reportversion \\
+    \sffamily Date          & \reportdate \\
+    \sffamily Status        & \reportstatus \\
+    \sffamily Distribution  & Public \\
+  \end{tabular}
+\end{titlepage}
+
+\pagenumbering{roman}
+
+% ---- Document control: revision history and contact -----------------------------
+\chapter*{Document control}
+\addcontentsline{toc}{chapter}{Document control}
+\markboth{Document control}{Document control}
+\section*{Revision history}
+Add a row for every version that leaves the team, newest last. Say what changed, not just
+that something did.
+
+\medskip
+\noindent\begin{tabularx}{\textwidth}{@{}l l l X@{}}
+  \toprule
+  Version & Date & Author & Changes \\
+  \midrule
+  0.1 & 2026-08-03 & F.\ Author & First draft of chapters 1 and 2. \\
+  0.2 & 2026-09-01 & S.\ Author & Added results; revised the approach after review. \\
+  0.9 & 2026-09-28 & F.\ Author & Executive summary, appendices; ready for review. \\
+  1.0 & 2026-10-15 & F.\ Author & Review comments addressed; released. \\
+  \bottomrule
+\end{tabularx}
+% Dates in ISO 8601 order (year-month-day) cannot be misread across countries \cite{iso8601}.
+
+\section*{Contact}
+First Author, \reportorg, \texttt{first.author@example.org}.
+
+% ---- Executive summary --------------------------------------------------------
+% \addchap makes an unnumbered chapter that is still listed in the contents.
+\addchap{Executive summary}
+Write this for the reader who will read nothing else, and write it last. Use one page,
+in this order:
+\begin{itemize}
+  \item \textbf{Purpose.} Why the work was done and for whom.
+  \item \textbf{What was done.} The approach in two sentences.
+  \item \textbf{Findings.} The three or four results that matter, with numbers.
+  \item \textbf{Recommendations.} What the reader should do now, and by when.
+\end{itemize}
+Avoid abbreviations, citations and cross-references: the summary must make sense when it is
+copied into an email.
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\clearpage
+\pagenumbering{arabic}
+
+% ---- Chapters ---------------------------------------------------------------
+% One file per chapter keeps main.tex short and lets several people edit in parallel.
+\input{chapters/introduction}
+\input{chapters/approach}
+\input{chapters/results}
+\input{chapters/conclusions}
+
+% ---- Appendices -----------------------------------------------------------------
+\appendix
+\input{chapters/appendix}
+
+% ---- References -----------------------------------------------------------------
+\bibliographystyle{plain}
+\bibliography{refs}
+
+\end{document}

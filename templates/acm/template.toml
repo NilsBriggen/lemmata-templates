@@ -1,5 +1,5 @@
 name = "ACM sigconf"
 description = "ACM conference paper with acmart in the sigconf format, with CCS concepts and keywords."
-order = 21
-category = "Papers"
+order = 63
+category = "Journals & conferences"
 tags = ["acm", "acmart", "sigconf", "computer science", "conference"]

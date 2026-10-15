@@ -1,0 +1,5 @@
+name = "Academic CV"
+description = "A multi-page academic CV with education, positions, grants, teaching, service, talks and publications listed from a .bib file."
+category = "Letters & CV"
+tags = ["cv", "curriculum vitae", "academic", "publications", "biblatex", "resume"]
+order = 52

@@ -1,0 +1,5 @@
+name = "IEEE journal"
+description = "An IEEE Transactions article with IEEEtran in journal mode: running header, keywords, appendix and author biographies."
+order = 62
+category = "Journals & conferences"
+tags = ["ieee", "ieeetran", "journal", "transactions", "two-column", "engineering", "biography"]

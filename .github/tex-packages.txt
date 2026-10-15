@@ -66,3 +66,27 @@ trimspaces
 upquote
 xkeyval
 xstring
+# For the 2.0 additions (chemistry, classicthesis, posters, teaching, CVs)
+mathtools
+achemso
+mciteplus
+mhchem
+chemgreek
+setspace
+classicthesis
+bera
+eulervm
+mparhack
+titlesec
+tocloft
+beamerposter
+type1cm
+tcolorbox
+pgfgantt
+lastpage
+tikzfill
+pdfcol
+listings
+listingsutf8
+xltabular
+ltablex

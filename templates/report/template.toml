@@ -1,0 +1,5 @@
+name = "Technical report"
+description = "A technical or project report with a title page carrying report number, date and version, an executive summary, contents, chapters, a revision history and appendices (KOMA-Script scrreprt)."
+order = 13
+category = "Theses & reports"
+tags = ["report", "technical report", "project report", "scrreprt", "executive summary", "revision history"]

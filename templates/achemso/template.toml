@@ -1,0 +1,5 @@
+name = "ACS journal"
+description = "A chemistry manuscript with the American Chemical Society's achemso class (JACS style): TOC graphic, mhchem formulae, siunitx units, supporting information."
+order = 69
+category = "Journals & conferences"
+tags = ["acs", "achemso", "chemistry", "jacs", "mhchem", "siunitx", "journal", "toc graphic"]

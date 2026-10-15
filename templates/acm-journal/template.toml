@@ -1,0 +1,5 @@
+name = "ACM journal"
+description = "A single-column ACM journal article with acmart (acmsmall), CCS concepts, keywords and the journal's metadata, as for TOMS or TOPLAS."
+order = 64
+category = "Journals & conferences"
+tags = ["acm", "acmart", "acmsmall", "journal", "computer science", "ccs concepts"]

@@ -1,0 +1,162 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[top=2.2cm,bottom=2.4cm,left=2.3cm,right=2.3cm]{geometry}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{xltabular}   % like tabularx, but the table may continue on the next page
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage[nobottomtitles*]{titlesec}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{accent}{HTML}{1F4E79}
+
+% ---- Look -----------------------------------------------------------------------------
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\titleformat{\section}{\large\bfseries\color{accent}}{}{0pt}{}[\vspace{-0.5ex}\color{accent}\titlerule]
+\titlespacing*{\section}{0pt}{1.4em}{0.6em}
+\setlist{nosep,leftmargin=1.4em}
+\renewcommand{\arraystretch}{1.25}   % a little air in every table row
+% Column types used below: L = left-aligned flexible column that wraps text,
+% and C, R = fixed-width columns that are centred or right-aligned.
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{black!60} STAT 301 \textperiodcentered\ Syllabus, autumn 2026 \textperiodcentered\ subject to change with notice}
+\fancyfoot[R]{\footnotesize\color{black!60} \thepage}
+
+\begin{document}
+
+% ---- Title and course facts ---------------------------------------------------------
+{\Large\color{accent}\textsc{Example University}\hfill Autumn 2026}\par
+{\Huge\bfseries STAT 301: Statistical Learning}\par
+\smallskip
+
+% Two columns, label and value. Add a row by copying a line: nothing else changes.
+\begin{tabularx}{\textwidth}{@{}>{\bfseries\raggedright\arraybackslash}p{3.9cm}L@{}}
+  \toprule
+  Instructor      & Prof.\ Alex Morgan, \href{mailto:alex.morgan@example.edu}{alex.morgan@example.edu} \\
+  Teaching assistants & Sam Rivera, Chidi Okafor \\
+  Lectures        & Mon and Wed, 10:15--11:45, Room 2.04, Hall of Sciences \\
+  Tutorial        & Fri, 14:15--15:45, Room 1.12 (choose one of two groups) \\
+  Credits         & 4 credits \qquad Language: English \\
+  Prerequisites   & Probability (MATH 210) and linear algebra (MATH 120) \\
+  Course page     & \href{https://learn.example.edu/stat301}{learn.example.edu/stat301}: slides, problem sets, announcements \\
+  \bottomrule
+\end{tabularx}
+
+\section{Course description}
+How can a computer learn to predict from data, and how do we know whether to trust it?
+The course introduces the main methods of supervised learning (linear and logistic
+regression, regularisation, trees and ensembles, kernel methods) together with the
+statistical ideas that justify them: bias and variance, cross-validation and uncertainty.
+Two or three sentences are enough here; say what the course is about and why it matters.
+
+\section{Learning outcomes}
+By the end of the course you will be able to:
+\begin{enumerate}
+  \item explain the bias--variance trade-off and use it to choose between models;
+  \item fit, tune and compare regression and classification models in R or Python;
+  \item evaluate a model honestly, with held-out data and cross-validation;
+  \item derive the estimators of linear and logistic regression and of ridge and lasso;
+  \item communicate the result of an analysis to a non-specialist in a short report.
+\end{enumerate}
+% Write outcomes as things students can do and you can test, starting with a verb.
+% Each should be assessed somewhere in the table further down.
+
+\section{Materials}
+\textbf{Textbook:} James, Witten, Hastie and Tibshirani, \emph{An Introduction to
+Statistical Learning}, 2nd ed.\ (free online version). Further readings are posted on the
+course page. Bring a laptop to the tutorials.
+
+\section{Weekly schedule}
+% One line per week: Week & Date & Topic & Reading & Due. Dates are the Monday of the
+% week. Mark holidays and exams in the Topic column. The table breaks across pages by
+% itself and repeats its header.
+\begin{xltabular}{\textwidth}{@{}C{1.1cm}C{1.5cm}L>{\raggedright\arraybackslash}p{2.1cm}>{\raggedright\arraybackslash}p{3.0cm}@{}}
+  \toprule
+  \textbf{Week} & \textbf{Date} & \textbf{Topic} & \textbf{Reading} & \textbf{Due} \\
+  \midrule
+  \endhead
+  \bottomrule
+  \endfoot
+   1 & Sep 14 & Introduction: prediction, inference, and the statistical learning set-up & ISLR 1--2 & \\
+   2 & Sep 21 & Linear regression & ISLR 3 & Problem set 1 \\
+   3 & Sep 28 & Classification and logistic regression & ISLR 4 & Problem set 2 \\
+   4 & Oct 5  & Resampling: cross-validation and the bootstrap & ISLR 5 & Problem set 3 \\
+   5 & Oct 12 & Subset selection and regularisation (ridge, lasso) & ISLR 6 & Project proposal \\
+   6 & Oct 19 & Splines and additive models & ISLR 7 & Problem set 4 \\
+   7 & Oct 26 & \emph{Midterm exam} (Wed, in class) and review & & Midterm exam \\
+   8 & Nov 2  & Decision trees & ISLR 8.1 & \\
+   9 & Nov 9  & Bagging, random forests, boosting & ISLR 8.2 & Problem set 5 \\
+  10 & Nov 16 & Support vector machines and kernels & ISLR 9 & Problem set 6 \\
+  11 & Nov 23 & \emph{No lecture} (mid-term break); work on the project & & \\
+  12 & Nov 30 & Unsupervised learning: PCA and clustering & ISLR 12 & Draft report \\
+  13 & Dec 7  & Uncertainty, fairness and good practice & Posted notes & Problem set 7 \\
+  14 & Dec 14 & Project presentations and course review & & Final report \\
+\end{xltabular}
+
+\section{Assessment}
+% Weights must add up to 100 %. The last column links each item to the outcomes above.
+\begin{tabularx}{\textwidth}{@{}Lp{2.2cm}C{1.6cm}@{}}
+  \toprule
+  \textbf{Component} & \textbf{Outcomes} & \textbf{Weight} \\
+  \midrule
+  Problem sets (7, the lowest one is dropped) & 1--4 & 30\,\% \\
+  Midterm exam (week 7) & 1, 3, 4 & 25\,\% \\
+  Group project: report and presentation & 2, 3, 5 & 30\,\% \\
+  Participation in tutorials & 2 & 5\,\% \\
+  Final quiz (online, 30 minutes) & 1, 3 & 10\,\% \\
+  \midrule
+  \textbf{Total} & & \textbf{100\,\%} \\
+  \bottomrule
+\end{tabularx}
+
+\smallskip
+Grades: 90\,\%\,+ is an A, 80\,\% a B, 70\,\% a C, 60\,\% a D. A final grade is
+rounded to the nearest whole percent.
+
+\section{Policies}
+\textbf{Attendance.} Lectures are not compulsory, tutorials are. You may miss two tutorials
+without giving a reason; tell the TAs before the session if you will miss more.
+
+\textbf{Late work.} Each problem set can be handed in up to 48 hours late with a deduction of
+10\,\% per day. After that it is not marked, unless you agreed an extension with me before the deadline.
+
+\textbf{Collaboration and academic integrity.} You may discuss problem sets with others, but
+you write and code your own solution and name everyone you worked with. Copying, or
+submitting work that is not your own, is handled under the university's integrity rules.
+
+\textbf{Use of AI tools.} You may use them to understand a concept or debug code, and you
+must say so in your submission. The code and text you hand in must be work you understand
+and can explain in an oral check.
+
+\textbf{Accessibility.} If you need accommodations, speak to me in the first two weeks or
+contact the Disability Support Office (\href{mailto:access@example.edu}{access@example.edu}).
+Everything stays confidential.
+
+\section{Contact and office hours}
+\begin{tabularx}{\textwidth}{@{}>{\bfseries\raggedright\arraybackslash}p{3.9cm}>{\raggedright\arraybackslash}p{5.2cm}L@{}}
+  \toprule
+  Person & \textbf{When} & \textbf{Where / how} \\
+  \midrule
+  Alex Morgan  & Tue 14:00--16:00 and by appointment & Office 4.12; book on the course page \\
+  Sam Rivera   & Thu 10:00--11:00 & Room 1.12 (TA); \href{mailto:s.rivera@example.edu}{s.rivera@example.edu} \\
+  Chidi Okafor & Thu 15:00--16:00 & Online (link on the course page) \\
+  \bottomrule
+\end{tabularx}
+
+\smallskip
+For quick questions on the material, use the discussion forum so that everybody sees the
+answer; write to me by email for anything personal. I reply within two working days.
+
+\end{document}

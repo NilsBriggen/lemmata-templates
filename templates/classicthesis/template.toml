@@ -1,0 +1,5 @@
+name = "Classic thesis"
+description = "A dissertation in André Miede's classicthesis style: small-caps headings, a wide margin for notes, front matter, chapters in separate files and a bibliography."
+category = "Theses & reports"
+tags = ["thesis", "dissertation", "classicthesis", "book", "palatino", "margin notes", "phd"]
+order = 12

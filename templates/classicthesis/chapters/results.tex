@@ -1,0 +1,22 @@
+\chapter{Results}\label{ch:results}
+
+\section{Main Findings}
+Report what you found before interpreting it. \Cref{tab:results} uses the \texttt{booktabs}
+rules that classicthesis already loads: horizontal rules only, no vertical lines.
+
+\begin{table}[bth]
+  \centering
+  \caption[Short title for the list of tables]{Results on the test set (mean over five runs).}\label{tab:results}
+  \begin{tabular}{@{}lrr@{}}
+    \toprule
+    Method & Accuracy (\%) & Time (s) \\
+    \midrule
+    Baseline & 81.2 & 12 \\
+    Our method & 86.9 & 15 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Discussion}
+Interpret the numbers: what do they show, what do they not show, and where could the
+result be misleading?

@@ -1,0 +1,110 @@
+\documentclass[paper=a4,fontsize=11pt,parskip=half,subject=underlined,
+               fromrule=off,fromalign=left,backaddress=false,foldmarks=false,enlargefirstpage=true]{scrlttr2}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{brand}{HTML}{7A1F2B}   % the institution's colour: used for the letterhead only
+
+% ---- Who is writing: change these once ---------------------------------------------
+\newcommand*{\institution}{Example University}
+\newcommand*{\department}{Department of Mathematics and Statistics}
+\newcommand*{\senderline}{\textbf{Prof.\ Alex Morgan}\\ Professor of Statistics}
+\newcommand*{\addressline}{10 University Road, Springfield 12345}
+\newcommand*{\contactline}{+1 555 0100 \textperiodcentered\ \href{mailto:alex.morgan@example.edu}{alex.morgan@example.edu}}
+
+% Line the address block, letterhead and signature up with the body text.
+\setplength{toaddrhpos}{\dimexpr 1in+\oddsidemargin\relax}
+\setplength{firstheadhpos}{\dimexpr 1in+\oddsidemargin\relax}
+\setplength{firstheadwidth}{\textwidth}
+\setplength{sigindent}{0pt}
+\setplength{sigbeforevskip}{1.6cm}
+\renewcommand*{\raggedsignature}{\raggedright}
+
+% ---- Letterhead (first page) and footer ----------------------------------------------
+% scrlttr2 draws the first page from "variables". Here the letterhead is one box:
+% institution on the left, the writer on the right, and a thin rule underneath.
+\setkomavar{firsthead}{%
+  \parbox[b]{.52\textwidth}{\raggedright
+    {\LARGE\bfseries\color{brand}\institution}\\[2pt]
+    {\color{brand}\department}}%
+  \hfill
+  \parbox[b]{.46\textwidth}{\raggedleft\small
+    \senderline\\ \addressline\\ \contactline}%
+  \\[3pt]\color{brand}\rule{\textwidth}{0.8pt}}
+\setkomavar{firstfoot}{\parbox{\textwidth}{\centering\footnotesize\color{black!60}
+  \institution\ \textperiodcentered\ \department}}
+
+% Later pages: a plain running head with the writer and the page number.
+\pagestyle{headings}
+\setkomavar{fromname}{Alex Morgan}
+\setkomavar{place}{Springfield}
+\setkomavar{date}{\today}
+\setkomavar{subject}{Letter of recommendation for Jamie Lee}
+\setkomavar{signature}{Prof.\ Alex Morgan\\ Professor of Statistics, \institution}
+
+% Run-in heading: a bold phrase that opens a paragraph. Committees skim, so the
+% phrase tells them what the paragraph is about before they read it.
+\newcommand*{\topic}[1]{\textbf{#1.}\ }
+
+\begin{document}
+
+% The address block: who receives the letter. Use the committee's name if you do not
+% know a person; "To whom it may concern" is the weakest option.
+\begin{letter}{Graduate Admissions Committee\\
+               Department of Computer Science\\
+               Lakeshore University\\
+               500 Lake Drive\\
+               Lakeshore 54321}
+
+\opening{Dear Members of the Admissions Committee,}
+
+\topic{Summary} I am writing to recommend Jamie Lee, without reservation, for admission to
+your PhD programme. In eight years of teaching and supervising I have rarely met a student
+who combines such strong technical ability with such good judgement about which problems
+are worth working on. State your overall verdict in the first paragraph; the rest of the
+letter is the evidence for it.
+
+\topic{How I know Jamie} I have known Jamie for three years. Jamie took my graduate course
+\emph{Statistical Learning} (45 students) in autumn 2024, then wrote a master's thesis under
+my supervision from February to August 2025, and has been a member of my research group
+since. We meet weekly, so I can speak to Jamie's work directly, not only from grades.
+Say how long you have known the candidate, in which role and how often you meet; readers
+weigh the letter by how well you know the person.
+
+\topic{Research ability} Jamie's thesis extended a recent method for graph estimation to
+data with heavy-tailed noise, a problem I had set aside as too hard. Jamie found a
+simpler proof route than the one I had in mind, implemented the method independently, and
+showed that it beats the best published baseline on three of four benchmarks. The work is
+now a conference submission with Jamie as first author. Concrete examples like this one,
+with what the candidate did and what came of it, persuade more than adjectives.
+
+\topic{Independence and communication} When a collaborator's data turned out to be
+mislabelled, Jamie noticed it, traced the cause and proposed a fix before anyone
+asked. Jamie also explains difficult ideas clearly: the group seminar talk was the best
+given by a master's student in my time here, and the students in the tutorial Jamie
+co-taught rated it 4.8 out of 5.
+
+\topic{Comparison} Of the roughly 90 students I have supervised or taught closely, Jamie
+is among the top three, and the strongest in the last five years. Compared with
+applicants I have recommended to your programme before, Jamie is on a par with the best.
+Give a ranking or a percentage and name the group you compare with; ``excellent'' alone
+says little, because every letter says it.
+
+\topic{Limits} In fairness, Jamie is quiet in large meetings and sometimes needs
+encouragement to share ideas early. In small groups this is no obstacle. A short, honest
+remark like this makes the rest of the letter more believable.
+
+\topic{Recommendation} I recommend Jamie Lee in the strongest terms and am confident that
+Jamie will do excellent research in your programme. Please contact me at
+\href{mailto:alex.morgan@example.edu}{alex.morgan@example.edu} if I can add anything.
+
+\closing{Sincerely,}
+
+% Optional: what you attach, or who gets a copy.
+% \encl{Curriculum vitae of the candidate}
+
+\end{letter}
+\end{document}

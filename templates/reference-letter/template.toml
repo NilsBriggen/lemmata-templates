@@ -1,0 +1,5 @@
+name = "Reference letter"
+description = "A letter of recommendation on institutional letterhead, structured the way committees read it, for academics writing for a student or colleague."
+category = "Letters & CV"
+tags = ["recommendation", "reference", "letterhead", "scrlttr2", "admissions", "academic"]
+order = 53

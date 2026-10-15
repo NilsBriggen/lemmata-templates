@@ -1,0 +1,5 @@
+name = "AMS mathematics article"
+description = "A mathematics research article with the AMS amsart class: theorems and proofs, MSC classes, keywords and an amsplain bibliography."
+order = 68
+category = "Journals & conferences"
+tags = ["amsart", "ams", "mathematics", "math", "theorem", "proof", "msc", "amsplain"]

@@ -1,0 +1,148 @@
+% A landscape reference card: three columns of small boxed sections that fit on one side of an
+% A4 sheet (add a second side by writing on). Print it double-sided for an exam, or pin it up.
+% extarticle offers 8, 9 and 10pt; 8pt is dense but readable when printed.
+\documentclass[10pt,landscape,a4paper]{extarticle}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[landscape,a4paper,margin=7mm]{geometry}   % narrow margins: most printers handle 7mm
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{5mm}
+\setlength{\columnseprule}{0.2pt}
+\setlist{nosep, leftmargin=*}   % lists without vertical gaps; every line counts on a cheat sheet
+\setlength{\abovedisplayskip}{2pt}
+\setlength{\belowdisplayskip}{2pt}
+
+% One box style for all sections: \begin{sheetbox}{Title} ... \end{sheetbox}.
+% Boxes stay in one piece (they do not break across columns), so keep each one short.
+\definecolor{accent}{HTML}{1F5FA8}
+\newtcolorbox{sheetbox}[1]{
+  colback=accent!4, colframe=accent, coltitle=white, fonttitle=\bfseries\footnotesize,
+  title={#1}, boxrule=0.4pt, arc=1.5pt, left=3pt, right=3pt, top=2pt, bottom=2pt,
+  boxsep=1.5pt, toptitle=1pt, bottomtitle=1pt, before skip=3pt, after skip=5pt
+}
+% A highlighted formula inside a box.
+\newcommand{\key}[1]{\fcolorbox{accent}{white}{\strut$\displaystyle #1$}}
+
+\begin{document}
+\raggedcolumns   % boxes of different heights need not stretch to fill a column
+% multicols balances the three columns; use multicols* to fill column 1 first instead.
+\begin{multicols}{3}
+
+\begin{center}
+  {\large\bfseries Calculus \& Probability}\\
+  Reference card, course name, exam date
+\end{center}
+
+\begin{sheetbox}{Derivatives}
+  \begin{tabular}{@{}ll@{}}
+    $(x^n)' = n x^{n-1}$ & $(e^x)' = e^x$ \\
+    $(\ln x)' = 1/x$ & $(\sin x)' = \cos x$ \\
+    $(\cos x)' = -\sin x$ & $(\tan x)' = 1/\cos^2 x$ \\
+  \end{tabular}\\[2pt]
+  Product: $(fg)' = f'g + fg'$ \quad Quotient: $\bigl(\tfrac{f}{g}\bigr)' = \tfrac{f'g - fg'}{g^2}$\\
+  Chain rule: \key{(f\circ g)'(x) = f'(g(x))\,g'(x)}
+\end{sheetbox}
+
+\begin{sheetbox}{Powers and logarithms}
+  $a^{m}a^{n} = a^{m+n}$ \qquad $(a^m)^n = a^{mn}$ \qquad $a^{-n} = 1/a^n$\\
+  $\ln(xy) = \ln x + \ln y$ \qquad $\ln(x^k) = k\ln x$\\
+  Change of base: \key{\log_a x = \frac{\ln x}{\ln a}}
+\end{sheetbox}
+
+\begin{sheetbox}{Limits}
+  $\lim_{x\to 0}\frac{\sin x}{x} = 1$ \qquad $\lim_{x\to\infty}\bigl(1+\tfrac1x\bigr)^x = e$\\
+  L'H\^opital: if $\frac{f}{g}\to\frac00$ or $\frac\infty\infty$, then $\lim\frac{f}{g} = \lim\frac{f'}{g'}$
+\end{sheetbox}
+
+\begin{sheetbox}{Integrals}
+  $\int x^n\,dx = \frac{x^{n+1}}{n+1} + C \;(n\neq -1)$ \qquad $\int \frac{1}{x}\,dx = \ln|x| + C$\\
+  $\int e^{ax}\,dx = \frac{1}{a}e^{ax} + C$ \qquad $\int \sin x\,dx = -\cos x + C$\\
+  By parts: \key{\int u\,dv = uv - \int v\,du}\\
+  Fundamental theorem: $\int_a^b f'(x)\,dx = f(b) - f(a)$
+\end{sheetbox}
+
+\begin{sheetbox}{Trigonometry}
+  $\sin^2 x + \cos^2 x = 1$ \qquad $\sin 2x = 2\sin x\cos x$\\
+  $\cos 2x = \cos^2 x - \sin^2 x$\\
+  $\sin(a\pm b) = \sin a\cos b \pm \cos a\sin b$\\
+  \begin{tabular}{@{}c|cccc@{}}
+    $x$ & $0$ & $\pi/6$ & $\pi/4$ & $\pi/2$ \\ \hline
+    $\sin x$ & $0$ & $\frac12$ & $\frac{\sqrt2}{2}$ & $1$ \\
+    $\cos x$ & $1$ & $\frac{\sqrt3}{2}$ & $\frac{\sqrt2}{2}$ & $0$ \\
+  \end{tabular}
+\end{sheetbox}
+
+\begin{sheetbox}{Series}
+  Geometric: \key{\sum_{k=0}^{\infty} q^k = \frac{1}{1-q}} for $|q|<1$\\
+  $e^x = \sum_{k\ge 0} \frac{x^k}{k!}$ \qquad $\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \dots$\\
+  Taylor: $f(x) = \sum_{k\ge 0} \frac{f^{(k)}(a)}{k!}(x-a)^k$
+\end{sheetbox}
+
+\begin{sheetbox}{Vectors}
+  $\mathbf a\cdot\mathbf b = |\mathbf a||\mathbf b|\cos\theta = \sum a_i b_i$ \qquad $|\mathbf a| = \sqrt{\mathbf a\cdot\mathbf a}$\\
+  Cross product in $\mathbb R^3$: $|\mathbf a\times\mathbf b| = |\mathbf a||\mathbf b|\sin\theta$\\
+  Projection: \key{\operatorname{proj}_{\mathbf b}\mathbf a = \frac{\mathbf a\cdot\mathbf b}{\mathbf b\cdot\mathbf b}\,\mathbf b}
+\end{sheetbox}
+
+\begin{sheetbox}{Sets and logic}
+  De Morgan: $\overline{A\cup B} = \bar A\cap\bar B$ \qquad $\neg(p\wedge q) \equiv \neg p\vee\neg q$\\
+  $p\Rightarrow q \;\equiv\; \neg q\Rightarrow\neg p$ (contrapositive)
+\end{sheetbox}
+
+\begin{sheetbox}{Linear algebra}
+  $(AB)^T = B^T A^T$ \qquad $(AB)^{-1} = B^{-1}A^{-1}$\\
+  $\det\begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad - bc$ \qquad
+  $A^{-1} = \frac{1}{ad-bc}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix}$\\
+  Eigenvalues: \key{\det(A - \lambda I) = 0}
+\end{sheetbox}
+
+\begin{sheetbox}{Probability}
+  $P(A\cup B) = P(A) + P(B) - P(A\cap B)$\\
+  Conditional: $P(A\mid B) = \frac{P(A\cap B)}{P(B)}$\\
+  Bayes: \key{P(A\mid B) = \frac{P(B\mid A)\,P(A)}{P(B)}}\\
+  Expectation and variance: $\mathrm{Var}(X) = E[X^2] - E[X]^2$
+\end{sheetbox}
+
+\begin{sheetbox}{Common distributions}
+  \begin{tabular}{@{}lll@{}}
+    \textbf{Name} & \textbf{Mean} & \textbf{Variance} \\ \hline
+    Bernoulli($p$) & $p$ & $p(1-p)$ \\
+    Binomial($n,p$) & $np$ & $np(1-p)$ \\
+    Poisson($\lambda$) & $\lambda$ & $\lambda$ \\
+    Normal($\mu,\sigma^2$) & $\mu$ & $\sigma^2$ \\
+  \end{tabular}
+\end{sheetbox}
+
+\begin{sheetbox}{Combinatorics}
+  $n! = n(n-1)\cdots 1$ \qquad $\binom{n}{k} = \frac{n!}{k!\,(n-k)!}$\\
+  Binomial theorem: \key{(a+b)^n = \sum_{k=0}^{n}\binom{n}{k}a^{n-k}b^k}\\
+  Ordered choices of $k$ from $n$: $\frac{n!}{(n-k)!}$
+\end{sheetbox}
+
+\begin{sheetbox}{Statistics}
+  Mean $\bar x = \frac1n\sum x_i$\\
+  Sample variance $s^2 = \frac{1}{n-1}\sum (x_i-\bar x)^2$\\
+  $z$-score: $z = \frac{x-\mu}{\sigma}$ \qquad 95\% interval: \key{\bar x \pm 1.96\,\frac{\sigma}{\sqrt n}}
+\end{sheetbox}
+
+\begin{sheetbox}{Complex numbers}
+  $z = a+bi = re^{i\varphi}$, \quad $|z| = \sqrt{a^2+b^2}$, \quad $\bar z = a-bi$\\
+  Euler: \key{e^{i\varphi} = \cos\varphi + i\sin\varphi} \qquad $e^{i\pi} + 1 = 0$
+\end{sheetbox}
+
+\begin{sheetbox}{Rules of thumb}
+  \begin{itemize}
+    \item Check units and the sign of every answer.
+    \item Write the formula first, then plug in numbers.
+    \item Sanity-check limits: what happens for $n=0$ or $x\to\infty$?
+  \end{itemize}
+\end{sheetbox}
+
+\end{multicols}
+\end{document}

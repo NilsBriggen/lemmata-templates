@@ -1,0 +1,5 @@
+name = "Slides with speaker notes"
+description = "Beamer slides with speaker notes beside each slide, for Lemmata's presenter view; one line turns them into plain slides to share."
+category = "Presentations"
+tags = ["beamer", "slides", "talk", "speaker notes", "presenter", "presentation"]
+order = 42

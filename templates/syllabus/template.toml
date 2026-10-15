@@ -1,0 +1,5 @@
+name = "Course syllabus"
+description = "A course syllabus with an info block, learning outcomes, weekly schedule, assessment weights, policies and office hours, built from tables that are easy to edit."
+category = "School"
+tags = ["syllabus", "course", "schedule", "assessment", "policies", "office hours", "tabularx"]
+order = 34

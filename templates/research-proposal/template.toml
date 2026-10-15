@@ -1,0 +1,5 @@
+name = "Research proposal"
+description = "A research or grant proposal with aims, background, methods, a work plan with an editable Gantt chart, milestones, a budget table that adds itself up, and references."
+order = 14
+category = "Theses & reports"
+tags = ["proposal", "grant", "research plan", "gantt", "pgfgantt", "budget", "phd"]

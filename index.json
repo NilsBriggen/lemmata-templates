@@ -2,68 +2,10 @@
   "version": 1,
   "templates": [
     {
-      "id": "blank",
-      "name": "Blank",
-      "description": "An empty document: just the class, the engine-friendly basics and a title.",
-      "category": "Basics",
-      "tags": [
-        "empty",
-        "minimal",
-        "plain"
-      ],
-      "order": 10,
-      "preview": {
-        "path": "preview.png",
-        "size": 2882,
-        "sha256": "7d57982d9bdd85265ce7d533d57d1350c5b56cb2a7e8d8426977ad235ad27b52"
-      },
-      "files": [
-        {
-          "path": "lemmata.toml",
-          "size": 38,
-          "sha256": "0027451e76bd0302bf979050521be826167cdd6776a9f24ef4e8e2b703ba1c41"
-        },
-        {
-          "path": "main.tex",
-          "size": 222,
-          "sha256": "7882f132b9bbfdb9089ef55e7f7799ab00689192264a77263aa4257480f05af7"
-        }
-      ]
-    },
-    {
-      "id": "cover-letter",
-      "name": "Cover letter",
-      "description": "A job-application cover letter with a sender block, paragraphs that say what to write, and no extra class.",
-      "category": "Letters & CV",
-      "tags": [
-        "application",
-        "job",
-        "motivation letter"
-      ],
-      "order": 50,
-      "preview": {
-        "path": "preview.png",
-        "size": 18021,
-        "sha256": "a23f901298795aef5651c8cd7ca76d8d5710f0a583a4011a15d4033e4cc48437"
-      },
-      "files": [
-        {
-          "path": "lemmata.toml",
-          "size": 38,
-          "sha256": "0027451e76bd0302bf979050521be826167cdd6776a9f24ef4e8e2b703ba1c41"
-        },
-        {
-          "path": "main.tex",
-          "size": 1522,
-          "sha256": "6b9f5e5ca79152ec43c06c026891fcc68936ef91a1f05df0100177771d7f1b50"
-        }
-      ]
-    },
-    {
       "id": "ieee",
       "name": "IEEE conference",
       "description": "Two-column conference paper with the IEEEtran class (IEEE conference proceedings).",
-      "category": "Papers",
+      "category": "Journals & conferences",
       "tags": [
         "ieee",
         "ieeetran",
@@ -71,7 +13,7 @@
         "two-column",
         "engineering"
       ],
-      "order": 20,
+      "order": 61,
       "preview": {
         "path": "preview.png",
         "size": 29062,
@@ -96,10 +38,48 @@
       ]
     },
     {
+      "id": "ieee-journal",
+      "name": "IEEE journal",
+      "description": "An IEEE Transactions article with IEEEtran in journal mode: running header, keywords, appendix and author biographies.",
+      "category": "Journals & conferences",
+      "tags": [
+        "ieee",
+        "ieeetran",
+        "journal",
+        "transactions",
+        "two-column",
+        "engineering",
+        "biography"
+      ],
+      "order": 62,
+      "preview": {
+        "path": "preview.png",
+        "size": 48959,
+        "sha256": "42a40d67a2d00455793fa59d9e9690c9359ff84d7d4e3293b31b099e1c740af8"
+      },
+      "files": [
+        {
+          "path": "lemmata.toml",
+          "size": 53,
+          "sha256": "be08c5e6defb604735f0cb0beb751c87ac48758b9908cc9d7d473ef0dab51a1a"
+        },
+        {
+          "path": "main.tex",
+          "size": 5358,
+          "sha256": "a7021fe47e2aa5900a4d4a01f814c8a0923d60240a2ab86237af663466c49b5b"
+        },
+        {
+          "path": "refs.bib",
+          "size": 629,
+          "sha256": "0c9c1b0b96d80a495366451b8b247a248676d3345782ad046e45b42088e199f5"
+        }
+      ]
+    },
+    {
       "id": "acm",
       "name": "ACM sigconf",
       "description": "ACM conference paper with acmart in the sigconf format, with CCS concepts and keywords.",
-      "category": "Papers",
+      "category": "Journals & conferences",
       "tags": [
         "acm",
         "acmart",
@@ -107,7 +87,7 @@
         "computer science",
         "conference"
       ],
-      "order": 21,
+      "order": 63,
       "preview": {
         "path": "preview.png",
         "size": 21948,
@@ -132,10 +112,47 @@
       ]
     },
     {
+      "id": "acm-journal",
+      "name": "ACM journal",
+      "description": "A single-column ACM journal article with acmart (acmsmall), CCS concepts, keywords and the journal's metadata, as for TOMS or TOPLAS.",
+      "category": "Journals & conferences",
+      "tags": [
+        "acm",
+        "acmart",
+        "acmsmall",
+        "journal",
+        "computer science",
+        "ccs concepts"
+      ],
+      "order": 64,
+      "preview": {
+        "path": "preview.png",
+        "size": 48067,
+        "sha256": "becbc92a7d955b093c3125ea117f4e8379ceb8550750a1fc32fcf4ac86dcf97a"
+      },
+      "files": [
+        {
+          "path": "lemmata.toml",
+          "size": 53,
+          "sha256": "be08c5e6defb604735f0cb0beb751c87ac48758b9908cc9d7d473ef0dab51a1a"
+        },
+        {
+          "path": "main.tex",
+          "size": 4868,
+          "sha256": "848e8ed02c32ba2c03e11d3968c2aa37fc3174005c10a2d5e03b2938a52a05bf"
+        },
+        {
+          "path": "refs.bib",
+          "size": 689,
+          "sha256": "96f8ca7d19c9f8ae94920efff7a986c29d7baaade4207cfe7105aeda0d80c5c1"
+        }
+      ]
+    },
+    {
       "id": "lncs",
       "name": "Springer LNCS",
       "description": "Springer Lecture Notes in Computer Science, with the llncs class and splncs04 bibliography.",
-      "category": "Papers",
+      "category": "Journals & conferences",
       "tags": [
         "springer",
         "llncs",
@@ -143,7 +160,7 @@
         "computer science",
         "conference"
       ],
-      "order": 22,
+      "order": 65,
       "preview": {
         "path": "preview.png",
         "size": 20834,
@@ -171,14 +188,14 @@
       "id": "elsevier",
       "name": "Elsevier journal",
       "description": "Manuscript for Elsevier journals with elsarticle: highlights, keywords and numbered references.",
-      "category": "Papers",
+      "category": "Journals & conferences",
       "tags": [
         "elsevier",
         "elsarticle",
         "journal",
         "preprint"
       ],
-      "order": 23,
+      "order": 66,
       "preview": {
         "path": "preview.png",
         "size": 4849,
@@ -206,7 +223,7 @@
       "id": "revtex",
       "name": "APS / AIP physics",
       "description": "Physics paper with REVTeX 4.2 for Physical Review, AIP and similar journals.",
-      "category": "Papers",
+      "category": "Journals & conferences",
       "tags": [
         "revtex",
         "aps",
@@ -214,7 +231,7 @@
         "physics",
         "physical review"
       ],
-      "order": 24,
+      "order": 67,
       "preview": {
         "path": "preview.png",
         "size": 25842,
@@ -239,6 +256,182 @@
       ]
     },
     {
+      "id": "amsart",
+      "name": "AMS mathematics article",
+      "description": "A mathematics research article with the AMS amsart class: theorems and proofs, MSC classes, keywords and an amsplain bibliography.",
+      "category": "Journals & conferences",
+      "tags": [
+        "amsart",
+        "ams",
+        "mathematics",
+        "math",
+        "theorem",
+        "proof",
+        "msc",
+        "amsplain"
+      ],
+      "order": 68,
+      "preview": {
+        "path": "preview.png",
+        "size": 31644,
+        "sha256": "2225c90b9f9021789d6b29c1128eda667ca5a3d9ee4f757f07f3d32b47dd2246"
+      },
+      "files": [
+        {
+          "path": "lemmata.toml",
+          "size": 53,
+          "sha256": "be08c5e6defb604735f0cb0beb751c87ac48758b9908cc9d7d473ef0dab51a1a"
+        },
+        {
+          "path": "main.tex",
+          "size": 6692,
+          "sha256": "012bc53b465f4e0a119a481c45e1aa8709ece96cfa5e12d32f26cc110c71bf2f"
+        },
+        {
+          "path": "refs.bib",
+          "size": 666,
+          "sha256": "34b53c7de33ca13f17809a8372057fa47b189a98082ed43e5b3bdf7f7c2fc631"
+        }
+      ]
+    },
+    {
+      "id": "achemso",
+      "name": "ACS journal",
+      "description": "A chemistry manuscript with the American Chemical Society's achemso class (JACS style): TOC graphic, mhchem formulae, siunitx units, supporting information.",
+      "category": "Journals & conferences",
+      "tags": [
+        "acs",
+        "achemso",
+        "chemistry",
+        "jacs",
+        "mhchem",
+        "siunitx",
+        "journal",
+        "toc graphic"
+      ],
+      "order": 69,
+      "preview": {
+        "path": "preview.png",
+        "size": 25651,
+        "sha256": "01da4d8a77a97616242208e3c3496986dd48777d1fbb0e161bce267f94e26619"
+      },
+      "files": [
+        {
+          "path": "lemmata.toml",
+          "size": 53,
+          "sha256": "be08c5e6defb604735f0cb0beb751c87ac48758b9908cc9d7d473ef0dab51a1a"
+        },
+        {
+          "path": "main.tex",
+          "size": 5429,
+          "sha256": "83e1cd227d370678465d81705834227b97cd2ab41441abfd1a83e9955a574708"
+        },
+        {
+          "path": "refs.bib",
+          "size": 843,
+          "sha256": "3ce5f9c9253984ffa35feceb646cebe9013773b5c9f1f96084a7f1c4805a0e9a"
+        }
+      ]
+    },
+    {
+      "id": "cover-letter",
+      "name": "Cover letter",
+      "description": "A job-application cover letter with a sender block, paragraphs that say what to write, and no extra class.",
+      "category": "Letters & CV",
+      "tags": [
+        "application",
+        "job",
+        "motivation letter"
+      ],
+      "order": 51,
+      "preview": {
+        "path": "preview.png",
+        "size": 18021,
+        "sha256": "a23f901298795aef5651c8cd7ca76d8d5710f0a583a4011a15d4033e4cc48437"
+      },
+      "files": [
+        {
+          "path": "lemmata.toml",
+          "size": 38,
+          "sha256": "0027451e76bd0302bf979050521be826167cdd6776a9f24ef4e8e2b703ba1c41"
+        },
+        {
+          "path": "main.tex",
+          "size": 1522,
+          "sha256": "6b9f5e5ca79152ec43c06c026891fcc68936ef91a1f05df0100177771d7f1b50"
+        }
+      ]
+    },
+    {
+      "id": "cv-academic",
+      "name": "Academic CV",
+      "description": "A multi-page academic CV with education, positions, grants, teaching, service, talks and publications listed from a .bib file.",
+      "category": "Letters & CV",
+      "tags": [
+        "cv",
+        "curriculum vitae",
+        "academic",
+        "publications",
+        "biblatex",
+        "resume"
+      ],
+      "order": 52,
+      "preview": {
+        "path": "preview.png",
+        "size": 35424,
+        "sha256": "5d43d9e711e2765a7b98b656bebc6636063e54bc4d3288fb4f50b8268c5708fc"
+      },
+      "files": [
+        {
+          "path": "lemmata.toml",
+          "size": 52,
+          "sha256": "2078c4a41806349828b999dd90ad6a0568679f0f594ad22b7cb1bab71aead409"
+        },
+        {
+          "path": "main.tex",
+          "size": 8322,
+          "sha256": "e15ffd80dc9e321fd272a12db5ac0ceafc4653f3e4bb5176c47312eddd4155af"
+        },
+        {
+          "path": "refs.bib",
+          "size": 2792,
+          "sha256": "46dd308bb31a27eb0c3dfafe76207a632c51ad772f7846cd488f5be13ec21611"
+        }
+      ]
+    },
+    {
+      "id": "reference-letter",
+      "name": "Reference letter",
+      "description": "A letter of recommendation on institutional letterhead, structured the way committees read it, for academics writing for a student or colleague.",
+      "category": "Letters & CV",
+      "tags": [
+        "recommendation",
+        "reference",
+        "letterhead",
+        "scrlttr2",
+        "admissions",
+        "academic"
+      ],
+      "order": 53,
+      "preview": {
+        "path": "preview.png",
+        "size": 38989,
+        "sha256": "408c2db265555b2e938616ec1c12c22026f40c945f8f782ed0b48fdcb017e527"
+      },
+      "files": [
+        {
+          "path": "lemmata.toml",
+          "size": 38,
+          "sha256": "0027451e76bd0302bf979050521be826167cdd6776a9f24ef4e8e2b703ba1c41"
+        },
+        {
+          "path": "main.tex",
+          "size": 5648,
+          "sha256": "453768a30623a97358fb299a292dd78d4031a1406a2b1c3cc1aa76bc1aa55330"
+        }
+      ]
+    },
+    {
       "id": "two-column",
       "name": "Two-column article",
       "description": "A generic two-column paper with a full-width title block, for venues without their own class.",
@@ -248,7 +441,7 @@
         "generic",
         "paper"
       ],
-      "order": 25,
+      "order": 21,
       "preview": {
         "path": "preview.png",
         "size": 17377,
@@ -273,6 +466,110 @@
       ]
     },
     {
+      "id": "preprint",
+      "name": "Preprint",
+      "description": "A calm single-column preprint for arXiv or a lab website, with several authors and affiliations, author-year citations and an appendix.",
+      "category": "Papers",
+      "tags": [
+        "preprint",
+        "arxiv",
+        "single-column",
+        "authors",
+        "affiliations",
+        "natbib",
+        "appendix"
+      ],
+      "order": 22,
+      "preview": {
+        "path": "preview.png",
+        "size": 38971,
+        "sha256": "ea2c5549b7560fd71c1b501b7d4e85aca7180fe13e45ef822cf3c0b646e1eacf"
+      },
+      "files": [
+        {
+          "path": "lemmata.toml",
+          "size": 53,
+          "sha256": "be08c5e6defb604735f0cb0beb751c87ac48758b9908cc9d7d473ef0dab51a1a"
+        },
+        {
+          "path": "main.tex",
+          "size": 8776,
+          "sha256": "fa519f535ecc450030be4ba81df8833090ff48beda623527ca9041d28d09ce34"
+        },
+        {
+          "path": "refs.bib",
+          "size": 882,
+          "sha256": "c3ca208dafc9aa2ae467ef5eb748dd5c1418033d946eb59af77477824356be64"
+        }
+      ]
+    },
+    {
+      "id": "extended-abstract",
+      "name": "Extended abstract",
+      "description": "A two-page, two-column extended abstract for a conference or workshop submission, with a title block, one figure and short references.",
+      "category": "Papers",
+      "tags": [
+        "extended abstract",
+        "two-page",
+        "workshop",
+        "conference",
+        "submission",
+        "two-column"
+      ],
+      "order": 23,
+      "preview": {
+        "path": "preview.png",
+        "size": 58837,
+        "sha256": "8adc5b9774a3565b59ee25ec3fa7bad9b0ba43b2b3b03c58b4700851d3de8dd9"
+      },
+      "files": [
+        {
+          "path": "lemmata.toml",
+          "size": 53,
+          "sha256": "be08c5e6defb604735f0cb0beb751c87ac48758b9908cc9d7d473ef0dab51a1a"
+        },
+        {
+          "path": "main.tex",
+          "size": 10303,
+          "sha256": "308f44f86e3e09377e1d71c869fd4bed3fd0fc0e51f5c6ac613f9dfa8e844279"
+        },
+        {
+          "path": "refs.bib",
+          "size": 882,
+          "sha256": "c3ca208dafc9aa2ae467ef5eb748dd5c1418033d946eb59af77477824356be64"
+        }
+      ]
+    },
+    {
+      "id": "blank",
+      "name": "Blank",
+      "description": "An empty document: just the class, the engine-friendly basics and a title.",
+      "category": "Papers",
+      "tags": [
+        "empty",
+        "minimal",
+        "plain"
+      ],
+      "order": 24,
+      "preview": {
+        "path": "preview.png",
+        "size": 2882,
+        "sha256": "7d57982d9bdd85265ce7d533d57d1350c5b56cb2a7e8d8426977ad235ad27b52"
+      },
+      "files": [
+        {
+          "path": "lemmata.toml",
+          "size": 38,
+          "sha256": "0027451e76bd0302bf979050521be826167cdd6776a9f24ef4e8e2b703ba1c41"
+        },
+        {
+          "path": "main.tex",
+          "size": 222,
+          "sha256": "7882f132b9bbfdb9089ef55e7f7799ab00689192264a77263aa4257480f05af7"
+        }
+      ]
+    },
+    {
       "id": "poster",
       "name": "Research poster",
       "description": "An A0 portrait conference poster with tikzposter: blocks, columns, figure and references.",
@@ -283,7 +580,7 @@
         "conference",
         "portrait"
       ],
-      "order": 40,
+      "order": 46,
       "preview": {
         "path": "preview.png",
         "size": 17574,
@@ -299,6 +596,39 @@
           "path": "main.tex",
           "size": 2440,
           "sha256": "0aafc4ba63b100522c46394ad3c30af09f182c7067bbfa4f05933fac070677f8"
+        }
+      ]
+    },
+    {
+      "id": "poster-landscape",
+      "name": "Poster, A0 landscape",
+      "description": "A four-column A0 landscape conference poster with beamerposter: header with logo placeholders, method diagram, results plot and table, and a QR code.",
+      "category": "Posters",
+      "tags": [
+        "poster",
+        "a0",
+        "landscape",
+        "beamerposter",
+        "conference",
+        "columns",
+        "qr code"
+      ],
+      "order": 47,
+      "preview": {
+        "path": "preview.png",
+        "size": 49004,
+        "sha256": "d669140b816f3315cf7befa1c92d171d2f7408592e447b98a55df4e8f1d869d4"
+      },
+      "files": [
+        {
+          "path": "lemmata.toml",
+          "size": 38,
+          "sha256": "0027451e76bd0302bf979050521be826167cdd6776a9f24ef4e8e2b703ba1c41"
+        },
+        {
+          "path": "main.tex",
+          "size": 6736,
+          "sha256": "82882b50d9b0e00e32e59a3598f1e7805d82a154c741f645fdd3ce1654e93751"
         }
       ]
     },
@@ -333,10 +663,42 @@
       ]
     },
     {
+      "id": "slides-notes",
+      "name": "Slides with speaker notes",
+      "description": "Beamer slides with speaker notes beside each slide, for Lemmata's presenter view; one line turns them into plain slides to share.",
+      "category": "Presentations",
+      "tags": [
+        "beamer",
+        "slides",
+        "talk",
+        "speaker notes",
+        "presenter",
+        "presentation"
+      ],
+      "order": 42,
+      "preview": {
+        "path": "preview.png",
+        "size": 6587,
+        "sha256": "72b8f952e048754186ac431621beabd73f542691de12dec3c95a340a9b2974f6"
+      },
+      "files": [
+        {
+          "path": "lemmata.toml",
+          "size": 38,
+          "sha256": "0027451e76bd0302bf979050521be826167cdd6776a9f24ef4e8e2b703ba1c41"
+        },
+        {
+          "path": "main.tex",
+          "size": 3689,
+          "sha256": "ffd5e45fc1aea4b6078c634e91b601d80daac85d0edb0662c189ef4c762e1671"
+        }
+      ]
+    },
+    {
       "id": "lab-report",
       "name": "Lab report",
       "description": "Aim, method, results table, a fitted plot and an error discussion, with SI units.",
-      "category": "Teaching",
+      "category": "School",
       "tags": [
         "physics",
         "chemistry",
@@ -344,7 +706,7 @@
         "siunitx",
         "lab"
       ],
-      "order": 30,
+      "order": 31,
       "preview": {
         "path": "preview.png",
         "size": 25105,
@@ -367,14 +729,14 @@
       "id": "exam",
       "name": "Exam",
       "description": "A printable exam with points, a grading table and optional solutions (the exam class).",
-      "category": "Teaching",
+      "category": "School",
       "tags": [
         "test",
         "quiz",
         "problem sheet",
         "solutions"
       ],
-      "order": 31,
+      "order": 32,
       "preview": {
         "path": "preview.png",
         "size": 14692,
@@ -394,47 +756,103 @@
       ]
     },
     {
-      "id": "book",
-      "name": "Book",
-      "description": "A book with parts, chapters, front matter, appendix and a bibliography (KOMA-Script scrbook).",
-      "category": "Theses & books",
+      "id": "lecture-notes",
+      "name": "Lecture notes",
+      "description": "Lecture notes for a university course with boxed definitions, theorems, examples and remarks, exercises with switchable solutions, margin notes and an index.",
+      "category": "School",
       "tags": [
-        "book",
-        "scrbook",
-        "manuscript",
-        "monograph"
+        "lecture notes",
+        "course",
+        "theorem",
+        "definition",
+        "exercises",
+        "solutions",
+        "tcolorbox",
+        "index",
+        "mathematics"
       ],
-      "order": 12,
+      "order": 33,
       "preview": {
         "path": "preview.png",
-        "size": 5847,
-        "sha256": "2be2ff9c9237da22dae5880c540fa5e88397956937d40581bf1d10b3617c5af3"
+        "size": 22346,
+        "sha256": "6ccb29c3048d59e7615749f17c32ad159408b5cd0c8c4245730b6c37be801ef1"
       },
       "files": [
         {
-          "path": "chapters/01-first-chapter.tex",
-          "size": 797,
-          "sha256": "c80494b8397cd719cc69f1385a56590ca453d764a7d3b1f286447a05c44d4096"
-        },
-        {
-          "path": "chapters/02-second-chapter.tex",
-          "size": 417,
-          "sha256": "5851bcd833ee5760fc3fe1b07c26813bb24c6fc931550a8b41fbb81fc19ac35e"
-        },
-        {
           "path": "lemmata.toml",
-          "size": 52,
-          "sha256": "2078c4a41806349828b999dd90ad6a0568679f0f594ad22b7cb1bab71aead409"
+          "size": 38,
+          "sha256": "0027451e76bd0302bf979050521be826167cdd6776a9f24ef4e8e2b703ba1c41"
         },
         {
           "path": "main.tex",
-          "size": 1458,
-          "sha256": "6de36a0af7689c6deff24dad386ced39e70d7a3802f02d07ab6b63dac774a513"
+          "size": 10992,
+          "sha256": "a0559c1008d627672dc1b5a24c012c0da0ac769c672add829c93685fecc28eab"
+        }
+      ]
+    },
+    {
+      "id": "syllabus",
+      "name": "Course syllabus",
+      "description": "A course syllabus with an info block, learning outcomes, weekly schedule, assessment weights, policies and office hours, built from tables that are easy to edit.",
+      "category": "School",
+      "tags": [
+        "syllabus",
+        "course",
+        "schedule",
+        "assessment",
+        "policies",
+        "office hours",
+        "tabularx"
+      ],
+      "order": 34,
+      "preview": {
+        "path": "preview.png",
+        "size": 39613,
+        "sha256": "0b0b3344e85afb872f80663a6a287f2d856405a872a60e0584e866a5f6a9582c"
+      },
+      "files": [
+        {
+          "path": "lemmata.toml",
+          "size": 38,
+          "sha256": "0027451e76bd0302bf979050521be826167cdd6776a9f24ef4e8e2b703ba1c41"
         },
         {
-          "path": "refs.bib",
-          "size": 182,
-          "sha256": "4a5c46740579a70a027b41949663c2fd283145cfc47ed4661125b0781fa8974c"
+          "path": "main.tex",
+          "size": 8087,
+          "sha256": "cd4463bb9aca925f3a6d01df6b0cc11049c7cab8d07d7f91424397e730a5de95"
+        }
+      ]
+    },
+    {
+      "id": "cheat-sheet",
+      "name": "Cheat sheet",
+      "description": "A landscape A4 reference card in three columns with boxed sections and small type, for exam formula sheets and quick-reference cards.",
+      "category": "School",
+      "tags": [
+        "cheat sheet",
+        "formula sheet",
+        "reference card",
+        "multicol",
+        "exam",
+        "landscape",
+        "columns"
+      ],
+      "order": 35,
+      "preview": {
+        "path": "preview.png",
+        "size": 43157,
+        "sha256": "9956f4a1f1fd5a4e57fea5fbbb49dd52cbfed9778499f7083f6e6020305e8f61"
+      },
+      "files": [
+        {
+          "path": "lemmata.toml",
+          "size": 38,
+          "sha256": "0027451e76bd0302bf979050521be826167cdd6776a9f24ef4e8e2b703ba1c41"
+        },
+        {
+          "path": "main.tex",
+          "size": 6236,
+          "sha256": "f80dc760fe51d97e9f265fb45ce73b7a1572a93ca7f55042b1c72aa584c863e0"
         }
       ]
     },
@@ -442,7 +860,7 @@
       "id": "thesis-full",
       "name": "Thesis with front matter",
       "description": "A thesis with title page, declaration, abstract, acknowledgements, lists of figures and tables, and appendix.",
-      "category": "Theses & books",
+      "category": "Theses & reports",
       "tags": [
         "thesis",
         "dissertation",
@@ -450,7 +868,7 @@
         "declaration",
         "front matter"
       ],
-      "order": 13,
+      "order": 11,
       "preview": {
         "path": "preview.png",
         "size": 7575,
@@ -486,6 +904,234 @@
           "path": "main.tex",
           "size": 2371,
           "sha256": "a7a0269417bbe4308c5a52807dd34a601efe8b8c46fbce17e36776f4d8b1fd47"
+        },
+        {
+          "path": "refs.bib",
+          "size": 182,
+          "sha256": "4a5c46740579a70a027b41949663c2fd283145cfc47ed4661125b0781fa8974c"
+        }
+      ]
+    },
+    {
+      "id": "classicthesis",
+      "name": "Classic thesis",
+      "description": "A dissertation in André Miede's classicthesis style: small-caps headings, a wide margin for notes, front matter, chapters in separate files and a bibliography.",
+      "category": "Theses & reports",
+      "tags": [
+        "thesis",
+        "dissertation",
+        "classicthesis",
+        "book",
+        "palatino",
+        "margin notes",
+        "phd"
+      ],
+      "order": 12,
+      "preview": {
+        "path": "preview.png",
+        "size": 8385,
+        "sha256": "3eb2d48008202c072c92ad23c2212739e66fcb83b4dea8bdc29cdf9afefaab95"
+      },
+      "files": [
+        {
+          "path": "chapters/appendix.tex",
+          "size": 232,
+          "sha256": "c1d8bec0c38d9ba1f6a483aff1d274c6226d971ba3f969d098be545fdac18ced"
+        },
+        {
+          "path": "chapters/conclusion.tex",
+          "size": 262,
+          "sha256": "f9b89d0a2aec201f56880bddd06d9ed262b70c9dab9e9dfe11b34221d9887f30"
+        },
+        {
+          "path": "chapters/introduction.tex",
+          "size": 1002,
+          "sha256": "6f1a056e10c6d0a58d49c09ff15f0c9e7b0635e0514b72db82dd94421befe4e6"
+        },
+        {
+          "path": "chapters/method.tex",
+          "size": 1135,
+          "sha256": "f98de98e1be464469e1580d4eca9f4b63d0884612933bc65d36fae610af9983e"
+        },
+        {
+          "path": "chapters/results.tex",
+          "size": 709,
+          "sha256": "5e9706b3bd6a1ab2a7c93fb1451b207723aaef4d35565ebabab6ba969363c6fc"
+        },
+        {
+          "path": "classicthesis-config.tex",
+          "size": 1416,
+          "sha256": "c759420a759e62751b8afc1080d24c7cc043534623cc9767ba342ec49e5e7cbc"
+        },
+        {
+          "path": "frontmatter/abstract.tex",
+          "size": 454,
+          "sha256": "faf902fe47f881c625bb0a4899e8f85dae48121bbe2c24b99962f4a682d81097"
+        },
+        {
+          "path": "frontmatter/acknowledgments.tex",
+          "size": 387,
+          "sha256": "00cf57827c9f29e425d649606ff664f5f58992e6d4c882ad3391a9f9f5149781"
+        },
+        {
+          "path": "frontmatter/titlepage.tex",
+          "size": 664,
+          "sha256": "c29ae8004b4ff5a848abeb11459d14ce1a66368bc5638c6dedff556de6d2888b"
+        },
+        {
+          "path": "lemmata.toml",
+          "size": 53,
+          "sha256": "be08c5e6defb604735f0cb0beb751c87ac48758b9908cc9d7d473ef0dab51a1a"
+        },
+        {
+          "path": "main.tex",
+          "size": 1577,
+          "sha256": "444268a2d1f5c32adf3661bb84a24af48dab402658f74531ebd631a5f18eac70"
+        },
+        {
+          "path": "refs.bib",
+          "size": 320,
+          "sha256": "54159ab2e85079eac29a9899a934807c79cb4a2f312aafd7709ad3a409165989"
+        }
+      ]
+    },
+    {
+      "id": "report",
+      "name": "Technical report",
+      "description": "A technical or project report with a title page carrying report number, date and version, an executive summary, contents, chapters, a revision history and appendices (KOMA-Script scrreprt).",
+      "category": "Theses & reports",
+      "tags": [
+        "report",
+        "technical report",
+        "project report",
+        "scrreprt",
+        "executive summary",
+        "revision history"
+      ],
+      "order": 13,
+      "preview": {
+        "path": "preview.png",
+        "size": 7901,
+        "sha256": "06751df212969b4d0619cb6145c674643b4e8d6703de770c14bf190e1ac9bf2b"
+      },
+      "files": [
+        {
+          "path": "chapters/appendix.tex",
+          "size": 746,
+          "sha256": "bff30852f28a6aa8c10885dc7c8ccbf9da984530e13c00394dff35b4b5f212bc"
+        },
+        {
+          "path": "chapters/approach.tex",
+          "size": 839,
+          "sha256": "1a89cfd910c1dc53628a3e5992cd102e46451ff2cdeb1ad6ffd980a895c58908"
+        },
+        {
+          "path": "chapters/conclusions.tex",
+          "size": 623,
+          "sha256": "44da6bf8a407289e93f7bdb82def3290d4cd595deeaa4aa8f77e6e395fc2bc96"
+        },
+        {
+          "path": "chapters/introduction.tex",
+          "size": 681,
+          "sha256": "85d61107021cd005273bd582cbd9d65e4b4e5b43cd474e53a3b17c68a315c14d"
+        },
+        {
+          "path": "chapters/results.tex",
+          "size": 1416,
+          "sha256": "eee11f4c237210638ea21055e050aaf519984ac415853e423869cac3d4bbcd3a"
+        },
+        {
+          "path": "lemmata.toml",
+          "size": 53,
+          "sha256": "be08c5e6defb604735f0cb0beb751c87ac48758b9908cc9d7d473ef0dab51a1a"
+        },
+        {
+          "path": "main.tex",
+          "size": 4984,
+          "sha256": "dbe022b77a14d71ddaba0b1301077d57eae6f7e978406eb10c062e334ccd0b58"
+        },
+        {
+          "path": "refs.bib",
+          "size": 594,
+          "sha256": "849649c188798a70a0891ca07779eb550f5b346000e70265eaa899687b6c33f8"
+        }
+      ]
+    },
+    {
+      "id": "research-proposal",
+      "name": "Research proposal",
+      "description": "A research or grant proposal with aims, background, methods, a work plan with an editable Gantt chart, milestones, a budget table that adds itself up, and references.",
+      "category": "Theses & reports",
+      "tags": [
+        "proposal",
+        "grant",
+        "research plan",
+        "gantt",
+        "pgfgantt",
+        "budget",
+        "phd"
+      ],
+      "order": 14,
+      "preview": {
+        "path": "preview.png",
+        "size": 39653,
+        "sha256": "604f2dddcc0fd533499bddbcb88453eecfad1d309e3f2e7d59e5be1e4ada5fb5"
+      },
+      "files": [
+        {
+          "path": "lemmata.toml",
+          "size": 53,
+          "sha256": "be08c5e6defb604735f0cb0beb751c87ac48758b9908cc9d7d473ef0dab51a1a"
+        },
+        {
+          "path": "main.tex",
+          "size": 10593,
+          "sha256": "f9c45082ed9b0ca707efaaf5fe9c6e7ade322364655fa3a03ff56333cee71fc2"
+        },
+        {
+          "path": "refs.bib",
+          "size": 751,
+          "sha256": "79966b98c9858b02fa472bf91ceb5a8a54351df9334c1f75e1e8c20dd3e0d170"
+        }
+      ]
+    },
+    {
+      "id": "book",
+      "name": "Book",
+      "description": "A book with parts, chapters, front matter, appendix and a bibliography (KOMA-Script scrbook).",
+      "category": "Theses & reports",
+      "tags": [
+        "book",
+        "scrbook",
+        "manuscript",
+        "monograph"
+      ],
+      "order": 15,
+      "preview": {
+        "path": "preview.png",
+        "size": 5847,
+        "sha256": "2be2ff9c9237da22dae5880c540fa5e88397956937d40581bf1d10b3617c5af3"
+      },
+      "files": [
+        {
+          "path": "chapters/01-first-chapter.tex",
+          "size": 797,
+          "sha256": "c80494b8397cd719cc69f1385a56590ca453d764a7d3b1f286447a05c44d4096"
+        },
+        {
+          "path": "chapters/02-second-chapter.tex",
+          "size": 417,
+          "sha256": "5851bcd833ee5760fc3fe1b07c26813bb24c6fc931550a8b41fbb81fc19ac35e"
+        },
+        {
+          "path": "lemmata.toml",
+          "size": 52,
+          "sha256": "2078c4a41806349828b999dd90ad6a0568679f0f594ad22b7cb1bab71aead409"
+        },
+        {
+          "path": "main.tex",
+          "size": 1458,
+          "sha256": "6de36a0af7689c6deff24dad386ced39e70d7a3802f02d07ab6b63dac774a513"
         },
         {
           "path": "refs.bib",

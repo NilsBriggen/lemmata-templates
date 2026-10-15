@@ -1,5 +1,5 @@
 name = "Blank"
 description = "An empty document: just the class, the engine-friendly basics and a title."
-order = 10
-category = "Basics"
+order = 24
+category = "Papers"
 tags = ["empty", "minimal", "plain"]

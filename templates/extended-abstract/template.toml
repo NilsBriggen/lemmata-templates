@@ -1,0 +1,5 @@
+name = "Extended abstract"
+description = "A two-page, two-column extended abstract for a conference or workshop submission, with a title block, one figure and short references."
+order = 23
+category = "Papers"
+tags = ["extended abstract", "two-page", "workshop", "conference", "submission", "two-column"]

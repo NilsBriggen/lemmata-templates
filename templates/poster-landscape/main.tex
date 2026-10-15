@@ -1,0 +1,159 @@
+% A0 landscape poster with beamerposter: an ordinary Beamer document with one huge page, so
+% blocks, columns and TikZ work as in slides. (The `poster` template uses tikzposter instead.)
+% For A1 or portrait, change size= / orientation= below and adjust the column widths.
+\documentclass[final]{beamer}
+\usepackage[size=a0,orientation=landscape,scale=2]{beamerposter}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% --- Look: one accent colour, rounded blocks, no navigation symbols. ---
+\usetheme{default}
+\setbeamertemplate{navigation symbols}{}
+\renewcommand{\familydefault}{\sfdefault}
+\definecolor{accent}{HTML}{1F5FA8}
+\setbeamercolor{block title}{bg=accent, fg=white}
+\setbeamercolor{block body}{bg=accent!8, fg=black}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamerfont{block title}{size=\LARGE, series=\bfseries}
+\setbeamerfont{block body}{size=\large}
+\setbeamersize{text margin left=1.5cm, text margin right=1.5cm}
+\addtobeamertemplate{block end}{}{\vspace{1.2cm}} % air between blocks
+\setbeamertemplate{itemize items}[circle]
+\setbeamercolor{itemize item}{fg=accent}
+\setlength{\parskip}{0.6ex}
+
+% --- Logo placeholders drawn with TikZ: replace each by \includegraphics[height=5cm]{logo.pdf}. ---
+\newcommand{\logoleft}{\tikz[baseline=(current bounding box.center)]{
+  \draw[white, line width=2mm] (0,0) rectangle (7,7); \fill[white] (0.7,0.7) rectangle (6.3,6.3);
+  \node[accent, font=\LARGE\bfseries] at (3.5,3.5) {Uni};}}
+\newcommand{\logoright}{\tikz[baseline=(current bounding box.center)]{\fill[white] (3.5,3.5) circle (3.5);
+  \fill[accent] (3.5,3.5) circle (2.9); \node[white, font=\LARGE\bfseries] at (3.5,3.5) {Lab};}}
+
+% --- A QR-code-sized placeholder (argument: size of one module in cm; 9 modules wide). Swap for \includegraphics{qr.pdf} or the `qrcode` package. ---
+\newcommand{\qrplaceholder}[1]{\begin{tikzpicture}[x=#1cm, y=#1cm]
+  \draw[line width=0.8mm] (0,0) rectangle (9,9);
+  \foreach \x/\y in {0.7/6.3, 6.3/6.3, 0.7/0.7}{
+    \draw[line width=1.2mm] (\x,\y) rectangle ++(2,2); \fill (\x+0.6,\y+0.6) rectangle ++(0.8,0.8);}
+  \foreach \x/\y in {4/7, 4.6/7.8, 5.3/6.6, 4/5, 5/4.4, 6/5.4, 7/4, 4.2/3, 5.4/2.2, 6.6/2.8, 7.4/1.6, 4/1.2, 3.2/4.2}{
+    \fill (\x,\y) rectangle ++(0.7,0.7);}
+\end{tikzpicture}}
+
+\title{Poster Title: One Clear Message in at Most Two Lines}
+% \texorpdfstring keeps the superscripts out of the PDF's author property (otherwise hyperref warns).
+\newcommand{\aff}[1]{\texorpdfstring{$^{#1}$}{ }}
+\author{First Author\aff{1}, Second Author\aff{2}, Third Author\aff{1}}
+\institute{$^1$Example University, Department of Science \quad $^2$Example Institute\\
+  \texttt{first.author@example.edu}}
+
+% The header: title and authors in the middle, a logo at each end.
+\setbeamertemplate{headline}{%
+  \begin{beamercolorbox}[wd=\paperwidth, ht=17cm, dp=0pt]{title}
+    \vbox to 17cm{\vfill
+      \hbox to \paperwidth{\hspace{2cm}\logoleft\hfill
+        \parbox[c]{0.6\paperwidth}{\centering
+          {\fontsize{80}{88}\selectfont\bfseries \inserttitle\par}\vspace{0.8cm}
+          {\huge \insertauthor\par}\vspace{0.3cm}
+          {\Large \insertinstitute\par}}%
+        \hfill\logoright\hspace{2cm}}%
+    \vfill}
+  \end{beamercolorbox}%
+}
+\setbeamercolor{title}{bg=accent, fg=white}
+
+\begin{document}
+\begin{frame}[t]
+\vspace{0.5cm}
+\begin{columns}[t,onlytextwidth]
+
+  % --- Column 1: why and what ---
+  \begin{column}{0.24\textwidth}
+    \begin{block}{Motivation}
+      Say why anyone should stop at your poster, in three short lines:
+      \begin{itemize}
+        \item The problem in one sentence.
+        \item Why existing approaches fall short.
+        \item What you did instead.
+      \end{itemize}
+    \end{block}
+    \begin{block}{Research question}
+      One question, readable from two metres away: \emph{Does the new method beat the
+      baseline without extra cost?}
+    \end{block}
+    \begin{block}{Data}
+      Describe the data in two lines: where it comes from, how big it is, what was excluded.
+    \end{block}
+  \end{column}
+
+  % --- Column 2: method ---
+  \begin{column}{0.24\textwidth}
+    \begin{block}{Method}
+      A diagram beats a paragraph; a formula should be set big enough to read from far away:
+      \[ \Large \hat{\theta} = \operatorname*{arg\,min}_{\theta}\; \frac{1}{n}\sum_{i=1}^{n} \ell\bigl(f_\theta(x_i), y_i\bigr) \]
+      \centering
+      \begin{tikzpicture}[node distance=3cm, box/.style={draw=accent, fill=white, line width=1mm, rounded corners, minimum width=16cm, minimum height=4.5cm}]
+        \node[box] (a) {Data};
+        \node[box, below=of a] (b) {Model};
+        \node[box, below=of b] (c) {Evaluation};
+        \draw[-{Stealth[length=1cm]}, line width=1mm] (a) -- (b);
+        \draw[-{Stealth[length=1cm]}, line width=1mm] (b) -- (c);
+      \end{tikzpicture}
+    \end{block}
+  \end{column}
+
+  % --- Column 3: results ---
+  \begin{column}{0.24\textwidth}
+    \begin{block}{Results}
+      \centering
+      \begin{tikzpicture}
+        \begin{axis}[scale only axis, width=0.72\linewidth, height=32cm, xlabel={Training size (k)}, ylabel={Accuracy (\%)},
+            legend pos=south east, grid=major, grid style={gray!30}, line width=1mm, mark size=4pt,
+            xtick={0,4,8,12,16}, ytick={60,70,80,90}, ymin=55, ymax=92, xmin=0,
+            tick label style={font=\Large}, label style={font=\Large}, legend style={font=\Large}]
+          \addplot[accent, mark=*] coordinates {(1,62) (2,70) (4,77) (8,82) (16,87)};
+          \addplot[gray, mark=square*, dashed] coordinates {(1,58) (2,64) (4,71) (8,76) (16,81)};
+          \legend{Ours, Baseline}
+        \end{axis}
+      \end{tikzpicture}
+
+      \bigskip
+      \begin{tabular}{@{}lrr@{}}
+        \toprule
+        Method & Acc.\ (\%) & Time (s) \\
+        \midrule
+        Baseline & 81.2 & 12 \\
+        Ours & \textbf{86.9} & 15 \\
+        \bottomrule
+      \end{tabular}
+    \end{block}
+  \end{column}
+
+  % --- Column 4: take-home ---
+  \begin{column}{0.24\textwidth}
+    \begin{block}{Conclusions}
+      \begin{itemize}
+        \item The main finding, with its number: +5.7 points.
+        \item The cost, stated honestly: +3~s.
+        \item What to do next.
+      \end{itemize}
+    \end{block}
+    \begin{block}{References}
+      [1] L.~Lamport. \emph{\LaTeX: A Document Preparation System}. Addison-Wesley, 1994.\par
+      [2] D.~E.~Knuth. \emph{The \TeX book}. Addison-Wesley, 1984.
+    \end{block}
+    \begin{block}{Paper, code and contact}
+      \centering
+      \qrplaceholder{1.8}\par
+      \smallskip
+      example.org/our-project
+    \end{block}
+  \end{column}
+
+\end{columns}
+\end{frame}
+\end{document}

@@ -1,0 +1,5 @@
+name = "Cheat sheet"
+description = "A landscape A4 reference card in three columns with boxed sections and small type, for exam formula sheets and quick-reference cards."
+category = "School"
+tags = ["cheat sheet", "formula sheet", "reference card", "multicol", "exam", "landscape", "columns"]
+order = 35
