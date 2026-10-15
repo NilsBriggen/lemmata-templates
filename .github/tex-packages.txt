@@ -1,0 +1,68 @@
+# TeX Live packages the templates need (plus scheme-basic). Add a template's packages here.
+# How to find them: build it with an empty Tectonic cache, or read its .fls, and map the
+# files to packages with `tlmgr search --global --file <name>`.
+scheme-basic
+latexmk
+biber
+biblatex
+collection-fontsrecommended
+amsmath
+amsfonts
+amscls
+tools
+float
+booktabs
+geometry
+enumitem
+etoolbox
+cleveref
+koma-script
+beamer
+lipsum
+# Publishers
+ieeetran
+cite
+acmart
+libertine
+newtx
+inconsolata
+llncs
+elsarticle
+natbib
+revtex
+# Teaching, posters, plots
+exam
+tikzposter
+a0poster
+pgf
+pgfplots
+siunitx
+microtype
+parskip
+# What the classes above load in turn
+aliascnt
+caption
+cmap
+comment
+environ
+everyshi
+extsizes
+figureversions
+fontaxes
+footmisc
+hyperxmp
+ifmtarg
+kastrup
+mmap
+mweights
+ncctools
+oberdiek
+preprint
+sansmathaccent
+textcase
+totpages
+translations
+trimspaces
+upquote
+xkeyval
+xstring

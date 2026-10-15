@@ -1,0 +1,8 @@
+build/
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.pdf
+.DS_Store
