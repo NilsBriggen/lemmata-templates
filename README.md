@@ -47,3 +47,7 @@ python3 scripts/build-index.py             # update index.json
 Commit the template, its `preview.png` and `index.json` together. If it needs TeX Live packages that aren't in `.github/tex-packages.txt` yet, add them: CI builds every template with exactly that list.
 
 `scripts/build.py` without names builds all templates; CI runs it on every push and checks that `index.json` is up to date.
+
+## License
+
+[CC0 1.0](LICENSE): the templates are dedicated to the public domain. Use, change and share them for anything, with no attribution needed; what you write with them is entirely yours. The document classes they use (IEEEtran, acmart and others) come from TeX Live under their own licenses and are not part of this repository.
