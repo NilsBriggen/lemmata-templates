@@ -9,6 +9,10 @@ This is a small, curated collection: 20 to 30 templates that are actually good, 
 - explains its non-obvious choices in short comments, in plain language;
 - stays small (no fonts or large images: each file under 5 MB, ideally far less).
 
+## Linking to a template
+
+`lemmata://new?template=<id>` opens Lemmata's New project gallery with that template chosen, for example `lemmata://new?template=ieee`. Use it for "Open in Lemmata" links on a website or in a README. Nothing is created until the user confirms.
+
 ## A template
 
 One folder in `templates/`, named by its id (lowercase, dashes):
